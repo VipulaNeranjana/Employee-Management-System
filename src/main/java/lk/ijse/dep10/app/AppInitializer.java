@@ -35,17 +35,7 @@ public class AppInitializer extends Application {
         primaryStage.setTitle("Login Window");
         primaryStage.show();
         primaryStage.centerOnScreen();
-
-
-
     }
-
-
-
-
-
-
-
     private void generateSchemaIfNotExist() {
         Connection connection = DBConnection.getInstance().getConnection();
         try {

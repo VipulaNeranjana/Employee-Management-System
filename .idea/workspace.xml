@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f97003b-4883-4829-97cc-07c903ea32d1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/AppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/AppInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/UserViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/UserViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/PaySheetViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/PaySheetViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +52,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -103,7 +102,7 @@
       <workItem from="1681191913468" duration="7591000" />
       <workItem from="1681204249060" duration="3813000" />
       <workItem from="1681208758934" duration="551000" />
-      <workItem from="1681216207156" duration="2505000" />
+      <workItem from="1681216207156" duration="2829000" />
     </task>
     <servers />
   </component>

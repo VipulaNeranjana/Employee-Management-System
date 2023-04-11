@@ -27,7 +27,14 @@ public class PaySheetViewController {
 
     @FXML
     void btnBackOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnBack.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/UserView.fxml"));
+        AnchorPane root  =fxmlLoader.load();
 
+        stage.setScene(new Scene(root));
+        stage.setTitle("User Window");
+        stage.show();
+        stage.centerOnScreen();
     }
 
     @FXML

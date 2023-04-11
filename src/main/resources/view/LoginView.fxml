@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="345.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.app.controller.LoginViewController">
+   <children>
+      <HBox layoutX="15.0" layoutY="14.0" prefHeight="48.0" prefWidth="571.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+         <children>
+            <Button fx:id="btnEmployeeLogIn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnEmployeeLogInOnAction" text="Employee Log In" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnAdminLogIn" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAdminLogInOnAction" text="Admin Log In" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <VBox layoutX="48.0" layoutY="90.0" spacing="20.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+         <children>
+            <Label text="User Name" />
+            <TextField fx:id="txtUserName" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="512.0" promptText="Enter Your User Name" VBox.vgrow="ALWAYS" />
+            <Label text="Password" />
+            <PasswordField fx:id="txtPassword" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="512.0" promptText="Enter Your Password" VBox.vgrow="ALWAYS" />
+            <Button fx:id="btnLogIn" defaultButton="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLogInOnAction" text="LOGIN" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

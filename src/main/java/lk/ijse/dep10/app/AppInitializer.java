@@ -1,7 +1,10 @@
 package lk.ijse.dep10.app;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dep10.app.db.DBConnection;
 
@@ -22,10 +25,26 @@ public class AppInitializer extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
         generateSchemaIfNotExist();
 
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/LoginView.fxml"));
+        AnchorPane root  =fxmlLoader.load();
+
+        primaryStage.setScene(new Scene(root));
+        primaryStage.setTitle("Login Window");
+        primaryStage.show();
+        primaryStage.centerOnScreen();
+
+
+
     }
+
+
+
+
+
+
 
     private void generateSchemaIfNotExist() {
         Connection connection = DBConnection.getInstance().getConnection();

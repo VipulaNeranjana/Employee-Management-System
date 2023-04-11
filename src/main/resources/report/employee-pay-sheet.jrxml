@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employee-pay-sheet" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c8b8c12b-4543-46f2-9181-231b63374cbc">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Manage Employee Data Adapter"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT id,
+	date,
+	name,
+	basic_salary,
+	overtime_payment,
+	bonus,
+	tax,
+	epf,
+	etf,
+	union_fee
+FROM hrm_database.`Payroll`]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="date" class="java.sql.Date"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="basic_salary" class="java.lang.Integer"/>
+	<field name="overtime_payment" class="java.lang.Integer"/>
+	<field name="bonus" class="java.lang.Integer"/>
+	<field name="tax" class="java.lang.Double"/>
+	<field name="epf" class="java.lang.Double"/>
+	<field name="etf" class="java.lang.Double"/>
+	<field name="union_fee" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="555" height="44" uuid="7d532fb8-1941-4c43-9062-5bb6dd809983"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="31" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ABC COMPANY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="49" width="555" height="26" uuid="e70623d9-092e-47c5-aee1-856b149f1faf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PAY SHEET]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="572" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="34" width="138" height="18" uuid="8936b93a-8617-405a-bb1f-78f3c165c2a9"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Month]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="96" width="138" height="18" uuid="7db8cd27-1086-45da-9ca7-34ac73b36c0a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="64" width="232" height="26" uuid="3aa23e05-b346-4d09-bc66-ad01696680ca"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMPLOYEE INFORMATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="138" height="18" uuid="e7688cec-5b6e-4ec1-828b-40280e5534a0"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="158" width="232" height="26" uuid="5370221a-7b0e-46e1-bf02-2ab1e7878e2f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONSOLIDATED SALARY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="190" width="138" height="18" uuid="453a44a3-e69f-4da6-911f-0df8cfce0358"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Basic Pay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="214" width="138" height="18" uuid="a4cba0f4-81ee-4af2-9561-8f24e27bfe3c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Overtime Pay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="238" width="138" height="18" uuid="1e1b1fed-9690-4845-adbf-0bf72cfe8015"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Bonus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="262" width="138" height="18" uuid="3acbfa59-7c69-4c77-97c7-b2549aae68a2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gross Pay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="301" width="232" height="26" uuid="c2f6fce2-3b6e-488f-b8d1-880569349b3d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEDUCTIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="333" width="138" height="18" uuid="c2033787-1568-425e-92ec-1afcc09b46ec"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Tax]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="357" width="138" height="18" uuid="c294d831-0aae-47f5-bb7e-3fa447cc1ce8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[EPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="381" width="138" height="18" uuid="fe85f2da-3f4f-4eec-9888-44b6dfabb78c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[ETF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="406" width="138" height="18" uuid="a4b83730-0d45-4024-9db5-f5cb632618f6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Union Fee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="430" width="139" height="18" uuid="b7138a8f-f8a4-4593-888e-197fac32fdd5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Deductions]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="465" width="139" height="18" uuid="e1626188-3f3f-4009-927e-32721675199f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NET PAY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="532" width="154" height="18" uuid="b4666bb2-dfe2-48a9-877e-4709a6c658d1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Approved By]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="550" width="154" height="18" uuid="bac0d77c-5329-4f98-817d-ce4f0ba99ae5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[(HR Manager)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="513" width="154" height="18" uuid="3632ba42-c960-42f8-8ebc-00aa3ec67b6b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[-------------------------------
+
+
+
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="9" width="414" height="20" uuid="0904be57-bbe1-49e9-8601-9a3b6128ab3e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}.toLocalDate().getYear()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="33" width="414" height="20" uuid="baf3aedb-2e02-498b-95fa-5f88bc2e5ede"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}.toLocalDate().getMonth()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="119" width="414" height="20" uuid="9d1083ba-a94d-4d09-bbbf-36f9e21e1811"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="95" width="414" height="20" uuid="5b4191df-b7c0-4d67-bd09-ee24573a8e4a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="189" width="414" height="20" uuid="bbe97d16-1847-4297-aa60-2693e4e9a2b8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{basic_salary}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="213" width="414" height="20" uuid="e4f2434e-cc3b-4f84-832e-1ccd7b53b0fa"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{overtime_payment}==0?"-":$F{overtime_payment}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="237" width="414" height="20" uuid="6f30c16a-2c62-4568-81d7-d1990fa15328"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bonus}==0?"-":$F{bonus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="261" width="414" height="20" uuid="f7080af8-a1b8-40db-8f15-ac10ab64eba3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{basic_salary}+$F{overtime_payment}+$F{bonus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="333" width="414" height="20" uuid="f746beab-2dee-4d2a-8ceb-8d15178f134b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tax}==0?"-":$F{tax}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="356" width="414" height="20" uuid="09fc000f-339f-4cf8-bb4e-d0b7f0ef7676"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{epf}==0?"-":$F{epf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="380" width="414" height="20" uuid="0c3f7c4f-0ec0-4d08-b6cb-b24506750aa4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{etf}==0?"-":$F{etf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="405" width="414" height="20" uuid="e7a560f6-8587-4092-a093-2ab228f8d107"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{union_fee}==0?"-":$F{union_fee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="463" width="414" height="20" uuid="3bba8d30-108e-44cc-a7a7-3984a50e6485"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{basic_salary}+$F{overtime_payment}+$F{bonus}-$F{tax}-$F{epf}-$F{etf}-$F{union_fee}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="10" width="138" height="18" uuid="0153be48-e51e-49d8-b88e-9be0315b8f4b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Year]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="429" width="414" height="20" uuid="2312bf36-181d-425b-af3a-7fcf9d908af3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tax}+$F{epf}+$F{etf}+$F{union_fee}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -2,34 +2,34 @@ CREATE TABLE IF NOT EXISTS Employee (
     nic VARCHAR(100) UNIQUE NOT NULL ,
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(200) NOT NULL ,
-    dob DATE NOT NULL ,
-    contact VARCHAR(200) NOT NULL ,
-    gender ENUM('MALE','FEMALE') NOT NULL ,
-    profile_pic MEDIUMBLOB NOT NULL ,
-    marital_status ENUM('MARRIED','UNMARRIED') NOT NULL ,
-    address VARCHAR(300) NOT NULL ,
-    user_type ENUM('USER','ADMIN') NOT NULL ,
-    nationality VARCHAR(100) NOT NULL ,
+    dob DATE  ,
+    contact VARCHAR(200)  ,
+    gender ENUM('MALE','FEMALE')  ,
+    profile_pic MEDIUMBLOB  ,
+    marital_status ENUM('MARRIED','UNMARRIED')  ,
+    address VARCHAR(300)  ,
+    user_type ENUM('USER','ADMIN')  ,
+    nationality VARCHAR(100)  ,
 
 
-    user_name VARCHAR(100) UNIQUE NOT NULL ,
-    password VARCHAR(100) NOT NULL ,
-    designation ENUM('EXECUTIVE','NON-EXECUTIVE') NOT NULL ,
-    joined_date DATE NOT NULL ,
-    union_member BOOLEAN NOT NULL ,
-    status ENUM('ACTIVE','INACTIVE') NOT NULL ,
+    user_name VARCHAR(100) UNIQUE  ,
+    password VARCHAR(100)  ,
+    designation ENUM('EXECUTIVE','NON-EXECUTIVE')  ,
+    joined_date DATE  ,
+    union_member BOOLEAN  ,
+    status ENUM('ACTIVE','INACTIVE')  ,
 
 
     basic_salary INT NOT NULL ,
-    bank_name VARCHAR(100) NOT NULL ,
-    account_no INT NOT NULL ,
-    branch_name VARCHAR(200) NOT NULL ,
+    bank_name VARCHAR(100)  ,
+    account_no INT  ,
+    branch_name VARCHAR(200)  ,
 
 
-    cv LONGBLOB NOT NULL ,
-    birth_certificate LONGBLOB NOT NULL ,
-    offer_letter LONGBLOB NOT NULL ,
-    agreement_letter LONGBLOB NOT NULL
+    cv LONGBLOB  ,
+    birth_certificate LONGBLOB  ,
+    offer_letter LONGBLOB  ,
+    agreement_letter LONGBLOB
 );
 
 CREATE TABLE IF NOT EXISTS Status (

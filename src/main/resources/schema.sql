@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS Leaves (
     id INT NOT NULL ,
     leave_date DATE NOT NULL ,
     apply_date DATE NOT NULL ,
+    leave_duration ENUM('FULL_DAY','HALF_DAY') NOT NULL,
     status ENUM('APPROVED','PENDING','REJECTED') NOT NULL ,
     leave_type ENUM('SICK','OTHER') NOT NULL,
     CONSTRAINT foreign_key3 FOREIGN KEY (id) REFERENCES Employee (id),
@@ -60,6 +61,7 @@ CREATE TABLE IF NOT EXISTS Leaves (
 CREATE TABLE IF NOT EXISTS Leave_Description (
     id INT NOT NULL ,
     leave_date DATE NOT NULL ,
+    reason VARCHAR(500) NOT NULL,
     CONSTRAINT foreign_key4 FOREIGN KEY (id,leave_date) REFERENCES Leaves (id,leave_date),
     CONSTRAINT composite_key4 PRIMARY KEY (id,leave_date)
 );

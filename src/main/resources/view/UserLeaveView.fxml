@@ -37,7 +37,7 @@
                      <children>
                         <VBox alignment="CENTER_RIGHT" layoutX="25.0" layoutY="50.0" prefHeight="462.0" prefWidth="837.0" spacing="10.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="50.0">
                            <children>
-                              <TableView prefHeight="360.0" prefWidth="825.0" VBox.vgrow="ALWAYS">
+                              <TableView fx:id="tblActiveLeave" prefHeight="360.0" prefWidth="825.0" VBox.vgrow="ALWAYS">
                                 <columns>
                                   <TableColumn prefWidth="75.0" text="Leave Type" />
                                   <TableColumn prefWidth="75.0" text="Apply date" />
@@ -83,7 +83,7 @@
                                     <TextField fx:id="txtSearch" prefHeight="24.0" prefWidth="263.0" />
                                  </graphic>
                               </Label>
-                              <TableView prefHeight="358.0" prefWidth="803.0" VBox.vgrow="ALWAYS">
+                              <TableView fx:id="tblLeaveSheet" prefHeight="358.0" prefWidth="803.0" VBox.vgrow="ALWAYS">
                                 <columns>
                                   <TableColumn prefWidth="75.0" text="Leave Type" />
                                   <TableColumn prefWidth="75.0" text="Apply Date" />

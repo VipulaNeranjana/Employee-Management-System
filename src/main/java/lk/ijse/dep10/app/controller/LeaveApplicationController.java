@@ -113,6 +113,7 @@ public class LeaveApplicationController {
             }
 
             connection.commit();
+            new Alert(Alert.AlertType.INFORMATION,"Your application has been submitted successfully!").showAndWait();
 
 
         } catch (Throwable e) {

@@ -2,7 +2,14 @@ package lk.ijse.dep10.app.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
 
 public class AdminViewController {
 
@@ -29,7 +36,15 @@ public class AdminViewController {
     }
 
     @FXML
-    void btnLeaveOnAction(ActionEvent event) {
+    void btnLeaveOnAction(ActionEvent event) throws IOException {
+        Stage stage=new Stage();
+        URL fxmlFile=this.getClass().getResource("/view/AdminLeaveView.fxml");
+        FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
+        AnchorPane root=fxmlLoader.load();
+        stage.setScene(new Scene(root));
+        stage.centerOnScreen();
+        stage.setTitle("Admin Leave");
+        stage.show();
 
     }
 

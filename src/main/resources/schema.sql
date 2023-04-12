@@ -46,17 +46,18 @@ CREATE TABLE IF NOT EXISTS Attendance (
     CONSTRAINT foreign_key2 FOREIGN KEY (id) REFERENCES Employee (id),
     CONSTRAINT composite_key2 PRIMARY KEY (id,date)
 );
-
+# DROP TABLE Leaves;
 CREATE TABLE IF NOT EXISTS Leaves (
     id INT NOT NULL ,
     leave_date DATE NOT NULL ,
     apply_date DATE NOT NULL ,
     status ENUM('APPROVED','PENDING','REJECTED') NOT NULL ,
     leave_type ENUM('SICK','OTHER') NOT NULL,
-    CONSTRAINT foreign_key3 FOREIGN KEY (id) REFERENCES Employee (id),
+#     CONSTRAINT foreign_key3 FOREIGN KEY (id) REFERENCES Employee (id),
     CONSTRAINT composite_key3 PRIMARY KEY (id,leave_date)
 );
 
+# drop TABLE Leave_Description;
 CREATE TABLE IF NOT EXISTS Leave_Description (
     id INT NOT NULL ,
     leave_date DATE NOT NULL ,

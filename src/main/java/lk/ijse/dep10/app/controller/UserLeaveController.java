@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -44,7 +45,7 @@ public class UserLeaveController {
 
     //TODO should add id here
 
-    private int id=123;
+    private int id = 123;
 
     public void initialize() {
 
@@ -52,11 +53,8 @@ public class UserLeaveController {
         tblActiveLeave.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("leaveType"));
         tblActiveLeave.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("applyDate"));
         tblActiveLeave.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("leaveDate"));
-        tblActiveLeave.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("status"));
-
-
-
-
+        tblActiveLeave.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("leaveDuration"));
+        tblActiveLeave.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("status"));
 
 
         /*set leaveApplication window as a first window*/
@@ -64,6 +62,14 @@ public class UserLeaveController {
         leaveApplication.setVisible(true);
 
         loadActiveLeaveTable();
+
+        tblActiveLeave.getSelectionModel().selectedItemProperty().addListener((value,previous,current) ->{
+            btnRemove.setDisable(false);
+            if (current == null) {
+                btnRemove.setDisable(true);
+            }
+        });
+
     }
 
     private void loadActiveLeaveTable() {
@@ -72,16 +78,17 @@ public class UserLeaveController {
         try {
 
             PreparedStatement stm = connection.prepareStatement("select * from Leaves where leave_date >= ? ");
-            stm.setDate(1,sqlDate);
+            stm.setDate(1, sqlDate);
             ResultSet resultSet = stm.executeQuery();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 String leaveType = resultSet.getString("leave_type");
                 Date applyDate = resultSet.getDate("apply_date");
                 Date leaveDate = resultSet.getDate("leave_date");
+                String leaveDuration = resultSet.getString("leave_duration");
                 String status = resultSet.getString("status");
 
-                Leave leave = new Leave(leaveDate, applyDate, leaveType, status);
+                Leave leave = new Leave(leaveDate, applyDate, leaveType,leaveDuration, status);
                 tblActiveLeave.getItems().add(leave);
             }
 
@@ -89,7 +96,6 @@ public class UserLeaveController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
 
     }
 
@@ -104,52 +110,108 @@ public class UserLeaveController {
         stage.show();
         stage.centerOnScreen();
 
-
     }
 
     @FXML
     void btnLeaveSheetOnAction(ActionEvent event) {
         leaveApplication.setVisible(false);
         leaveSheet.setVisible(true);
+        tblActiveLeave.getSelectionModel().clearSelection();
+
+        loadLeaveSheet();
+
+        txtSearch.textProperty().addListener((value,previous,current) -> {
+            loadLeaveSheet();
+        });
+
+
+    }
+    private void loadLeaveSheet(){
+
+        tblLeaveSheet.getItems().clear();
 
         tblLeaveSheet.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("leaveType"));
         tblLeaveSheet.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("applyDate"));
         tblLeaveSheet.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("leaveDate"));
-        tblLeaveSheet.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("status"));
+        tblLeaveSheet.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("leaveDuration"));
+        tblLeaveSheet.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("status"));
 
         Connection connection = DBConnection.getInstance().getConnection();
         try {
 
-            PreparedStatement stm = connection.prepareStatement("select * from Leaves where id = ? and status != ?");
-            stm.setInt(1,id);
-            stm.setString(2, Status.PENDING.toString());
+            PreparedStatement stm = connection.prepareStatement("select * from Leaves where (leave_type like ? or apply_date like ? or leave_date like ? or leave_duration like ?) and status != ? ");
+            String query = "%" + txtSearch.getText() + "%";
+            stm.setString(1, query);
+            stm.setString(2, query);
+            stm.setString(3, query);
+            stm.setString(4, query);
+            stm.setString(5, Status.PENDING.toString());
             ResultSet resultSet = stm.executeQuery();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 String leaveType = resultSet.getString("leave_type");
                 Date applyDate = resultSet.getDate("apply_date");
                 Date leaveDate = resultSet.getDate("leave_date");
+                String leaveDuration = resultSet.getString("leave_duration");
                 String status = resultSet.getString("status");
 
-                Leave leave = new Leave(leaveDate, applyDate, leaveType, status);
+                Leave leave = new Leave(leaveDate, applyDate, leaveType,leaveDuration, status);
                 tblLeaveSheet.getItems().add(leave);
             }
-
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
-
-
     }
 
     @FXML
     void btnRemoveOnAction(ActionEvent event) {
+        Leave selectedItem = tblActiveLeave.getSelectionModel().getSelectedItem();
+        Connection connection = DBConnection.getInstance().getConnection();
+        try {
+
+            connection.setAutoCommit(false);
+
+            PreparedStatement stm = connection.prepareStatement("delete from Leaves where id = ? and leave_date = ?");
+            PreparedStatement stm1 = connection.prepareStatement("delete from Leave_Description where id = ? and leave_date = ?");
+
+            if (selectedItem.getLeaveType().equals("OTHER")){
+                stm1.setInt(1,id);
+                stm1.setDate(2,selectedItem.getLeaveDate());
+                stm1.executeUpdate();
+            }
+            stm.setInt(1,id);
+            stm.setDate(2,selectedItem.getLeaveDate());
+            stm.executeUpdate();
+
+            connection.commit();
+
+            tblActiveLeave.getItems().remove(selectedItem);
+            tblActiveLeave.refresh();
+
+
+
+
+        } catch (Throwable e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR,"Failed to remove the request!").showAndWait();
+
+            throw new RuntimeException(e);
+        }finally {
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
 
     }
-
     public void btnHomeOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) btnAddApplication.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/UserView.fxml"));
@@ -161,7 +223,6 @@ public class UserLeaveController {
         stage.centerOnScreen();
 
     }
-
     public void btnBackOnAction(ActionEvent actionEvent) {
         leaveSheet.setVisible(false);
         leaveApplication.setVisible(true);

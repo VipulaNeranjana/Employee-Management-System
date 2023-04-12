@@ -15,5 +15,6 @@ public class Leave implements Serializable {
     private Date leaveDate;
     private Date applyDate;
     private String leaveType;
+    private String leaveDuration;
     private String status;
 }

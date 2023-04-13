@@ -77,6 +77,7 @@ public class AdminLeaveViewController {
         tblLeaveApprove.refresh();
         try {
             Connection connection=DBConnection.getInstance().getConnection();
+            connection.setAutoCommit(false);
             String sql="update Leaves set status='APPROVED' where leave_date=? and id=?" ;
             PreparedStatement stm = connection.prepareStatement(sql);
             Date leaveDate = Date.valueOf(selectedLeave.getLeaveDate());
@@ -84,9 +85,20 @@ public class AdminLeaveViewController {
             stm.setDate(1,leaveDate);
             stm.setInt(2,id);
             stm.executeUpdate();
+            connection.commit();
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (Throwable e) {
+            try {
+                DBConnection.getInstance().getConnection().rollback();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        }finally {
+            try {
+                DBConnection.getInstance().getConnection().setAutoCommit(true);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -96,7 +108,9 @@ public class AdminLeaveViewController {
         selectedLeave.setStatus(Employee.Status.REJECTED);
         tblLeaveApprove.refresh();
         try {
+
             Connection connection=DBConnection.getInstance().getConnection();
+            connection.setAutoCommit(false);
             String sql="update Leaves set status='REJECTED' where leave_date=? and id=?" ;
             PreparedStatement stm = connection.prepareStatement(sql);
             Date leaveDate = Date.valueOf(selectedLeave.getLeaveDate());
@@ -104,8 +118,19 @@ public class AdminLeaveViewController {
             stm.setDate(1,leaveDate);
             stm.setInt(2,id);
             stm.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            connection.commit();
+        } catch (Throwable e) {
+            try {
+                DBConnection.getInstance().getConnection().rollback();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        }finally {
+            try {
+                DBConnection.getInstance().getConnection().setAutoCommit(true);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

@@ -151,5 +151,6 @@ public class AdminLeaveViewController {
         stage.setScene(new Scene(root));
         stage.setTitle("View History");
         stage.centerOnScreen();
+        stage.show();
     }
 }

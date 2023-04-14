@@ -32,48 +32,60 @@ public class AdminLeaveViewController {
     private TableView<Employee> tblLeaveApprove;
 
 
-    public  void initialize(){
-      tblLeaveApprove.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
-      tblLeaveApprove.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("name"));
-      tblLeaveApprove.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("leaveType"));
-      tblLeaveApprove.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("applyDate"));
-      tblLeaveApprove.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("leaveDate"));
-      tblLeaveApprove.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("status"));
+    public void initialize() {
+        tblLeaveApprove.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
+        tblLeaveApprove.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("name"));
+        tblLeaveApprove.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("leaveType"));
+        tblLeaveApprove.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("applyDate"));
+        tblLeaveApprove.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("leaveDate"));
+        tblLeaveApprove.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("status"));
 
-      loadAllLeaveRequest();
+        loadAllLeaveRequest();
+        btnApprove.setDisable(true);
+        btnReject.setDisable(true);
 
-      tblLeaveApprove.getColumns().get(2).getStyleClass().add("center");
+        tblLeaveApprove.getSelectionModel().selectedItemProperty().addListener((observableValue, previous, current) -> {
+            if (current == null) return;
+            btnApprove.setDisable(current == null);
+            btnReject.setDisable(current == null);
+        });
+
+
+        tblLeaveApprove.getColumns().get(2).getStyleClass().add("center");
+        tblLeaveApprove.getColumns().get(3).getStyleClass().add("center");
+        tblLeaveApprove.getColumns().get(4).getStyleClass().add("center");
+        tblLeaveApprove.getColumns().get(5).getStyleClass().add("center");
     }
 
-    private void loadAllLeaveRequest(){
+    private void loadAllLeaveRequest() {
         tblLeaveApprove.getItems().clear();
         try {
-            Connection connection= DBConnection.getInstance().getConnection();
-            String sql="select * from Leaves where leave_date>=? ";
+            Connection connection = DBConnection.getInstance().getConnection();
+            String sql = "select * from Leaves where leave_date>=? ";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setDate(1, Date.valueOf(LocalDate.now()));
             ResultSet rstLeaveList = stm.executeQuery();
 
             // retrieve name using id
             PreparedStatement stm2 = connection.prepareStatement("select * from Employee where id=?");
-            while (rstLeaveList.next()){
+            while (rstLeaveList.next()) {
                 int id = rstLeaveList.getInt("id");
                 LocalDate leaveDate = rstLeaveList.getDate("leave_date").toLocalDate();
                 LocalDate applyDate = rstLeaveList.getDate("apply_date").toLocalDate();
                 Employee.Status status = Employee.Status.valueOf(rstLeaveList.getString("status"));
                 Employee.LeaveType leaveType = Employee.LeaveType.valueOf(rstLeaveList.getString("leave_type"));
 
-                Employee employee=new Employee(id,null,leaveType,applyDate,leaveDate,status);
-                stm2.setInt(1,id);
+                Employee employee = new Employee(id, null, leaveType, applyDate, leaveDate, status);
+                stm2.setInt(1, id);
                 ResultSet rstEmployeeList = stm2.executeQuery();
-                while (rstEmployeeList.next()){
+                while (rstEmployeeList.next()) {
                     String name = rstEmployeeList.getString("name");
                     employee.setName(name);
                 }
                 tblLeaveApprove.getItems().add(employee);
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,"Can not load leave requests, please try again");
+            new Alert(Alert.AlertType.ERROR, "Can not load leave requests, please try again");
             e.printStackTrace();
         }
 
@@ -86,14 +98,14 @@ public class AdminLeaveViewController {
         selectedLeave.setStatus(Employee.Status.APPROVED);
         tblLeaveApprove.refresh();
         try {
-            Connection connection=DBConnection.getInstance().getConnection();
+            Connection connection = DBConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
-            String sql="update Leaves set status='APPROVED' where leave_date=? and id=?" ;
+            String sql = "update Leaves set status='APPROVED' where leave_date=? and id=?";
             PreparedStatement stm = connection.prepareStatement(sql);
             Date leaveDate = Date.valueOf(selectedLeave.getLeaveDate());
             int id = selectedLeave.getId();
-            stm.setDate(1,leaveDate);
-            stm.setInt(2,id);
+            stm.setDate(1, leaveDate);
+            stm.setInt(2, id);
             stm.executeUpdate();
             connection.commit();
 
@@ -103,7 +115,7 @@ public class AdminLeaveViewController {
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
-        }finally {
+        } finally {
             try {
                 DBConnection.getInstance().getConnection().setAutoCommit(true);
             } catch (SQLException e) {
@@ -119,14 +131,14 @@ public class AdminLeaveViewController {
         tblLeaveApprove.refresh();
         try {
 
-            Connection connection=DBConnection.getInstance().getConnection();
+            Connection connection = DBConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
-            String sql="update Leaves set status='REJECTED' where leave_date=? and id=?" ;
+            String sql = "update Leaves set status='REJECTED' where leave_date=? and id=?";
             PreparedStatement stm = connection.prepareStatement(sql);
             Date leaveDate = Date.valueOf(selectedLeave.getLeaveDate());
             int id = selectedLeave.getId();
-            stm.setDate(1,leaveDate);
-            stm.setInt(2,id);
+            stm.setDate(1, leaveDate);
+            stm.setInt(2, id);
             stm.executeUpdate();
             connection.commit();
         } catch (Throwable e) {
@@ -135,7 +147,7 @@ public class AdminLeaveViewController {
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
-        }finally {
+        } finally {
             try {
                 DBConnection.getInstance().getConnection().setAutoCommit(true);
             } catch (SQLException e) {
@@ -145,9 +157,9 @@ public class AdminLeaveViewController {
     }
 
     public void btnViewHistoryOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage=new Stage();
-        FXMLLoader fxmlLoader=new FXMLLoader(this.getClass().getResource("/view/LeaveReportView.fxml"));
-        AnchorPane root=fxmlLoader.load();
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/LeaveReportView.fxml"));
+        AnchorPane root = fxmlLoader.load();
         stage.setScene(new Scene(root));
         stage.setTitle("View History");
         stage.centerOnScreen();

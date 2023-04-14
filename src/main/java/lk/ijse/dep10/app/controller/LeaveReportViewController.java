@@ -27,7 +27,12 @@ public class LeaveReportViewController {
         tblLeaveApprove.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("applyDate"));
         tblLeaveApprove.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("leaveDate"));
         tblLeaveApprove.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("status"));
+
         loadAllLeaveRequest();
+        tblLeaveApprove.getColumns().get(2).getStyleClass().add("center");
+        tblLeaveApprove.getColumns().get(3).getStyleClass().add("center");
+        tblLeaveApprove.getColumns().get(4).getStyleClass().add("center");
+        tblLeaveApprove.getColumns().get(5).getStyleClass().add("center");
     }
 
     private void loadAllLeaveRequest() {

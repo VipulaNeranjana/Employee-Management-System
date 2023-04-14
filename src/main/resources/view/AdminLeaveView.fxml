@@ -4,11 +4,11 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.layout.HBox?>
 
 <AnchorPane prefHeight="400.0" prefWidth="891.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.app.controller.AdminLeaveViewController">
    <children>
-      <TableView fx:id="tblLeaveApprove" layoutX="14.0" layoutY="26.0" prefHeight="317.0" prefWidth="864.0">
+      <TableView fx:id="tblLeaveApprove" layoutX="14.0" layoutY="26.0" prefHeight="317.0" prefWidth="864.0" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
         <columns>
           <TableColumn prefWidth="127.0" text="Id" />
           <TableColumn prefWidth="85.0" text="Employee Name" />
@@ -21,7 +21,12 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="btnReject" layoutX="755.0" layoutY="352.0" mnemonicParsing="false" onAction="#btnRejectOnAction" prefHeight="38.0" prefWidth="122.0" text="Reject" />
-      <Button fx:id="btnApprove" layoutX="615.0" layoutY="352.0" mnemonicParsing="false" onAction="#btnApproveOnAction" prefHeight="38.0" prefWidth="122.0" text="Approve" />
+      <HBox layoutX="617.0" layoutY="348.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="14.0">
+         <children>
+            <Button fx:id="btnApprove" mnemonicParsing="false" onAction="#btnApproveOnAction" prefHeight="38.0" prefWidth="122.0" text="Approve" />
+            <Button fx:id="btnReject" mnemonicParsing="false" onAction="#btnRejectOnAction" prefHeight="38.0" prefWidth="128.0" text="Reject" />
+         </children>
+      </HBox>
+      <Button fx:id="btnViewHistory" layoutX="14.0" layoutY="352.0" mnemonicParsing="false" onAction="#btnViewHistoryOnAction" prefHeight="38.0" prefWidth="122.0" text="View History" />
    </children>
 </AnchorPane>

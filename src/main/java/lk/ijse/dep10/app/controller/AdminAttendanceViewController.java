@@ -3,12 +3,15 @@ package lk.ijse.dep10.app.controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dep10.app.db.DBConnection;
 
+import java.io.IOException;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -127,9 +130,26 @@ public class AdminAttendanceViewController {
 
     }
 
-    public void btnAttendanceListOnAction(ActionEvent actionEvent) {
+    public void btnAttendanceListOnAction(ActionEvent actionEvent) throws IOException {
+
+       /*Load view attendance scene*/
+
+        Stage stage = (Stage) btnAttendanceList.getScene().getWindow();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/AttendanceListView.fxml"));
+
+        AnchorPane root = fxmlLoader.load();
+
+        AttendanceListViewController ctrl = fxmlLoader.getController();
+        ctrl.initData(btnAttendanceList.getScene());
+
+        stage.setTitle("Admin Attendance List");
+        stage.setScene(new Scene(root));
+        stage.sizeToScene();
+
     }
 
     public void btnAttendanceReportOnAction(ActionEvent actionEvent) {
+
     }
 }

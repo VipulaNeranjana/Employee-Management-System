@@ -149,7 +149,20 @@ public class AdminAttendanceViewController {
 
     }
 
-    public void btnAttendanceReportOnAction(ActionEvent actionEvent) {
+    public void btnAttendanceReportOnAction(ActionEvent actionEvent) throws IOException {
+
+        Stage stage = (Stage) btnAttendanceList.getScene().getWindow();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/AttendanceReportView.fxml"));
+
+        AnchorPane root = fxmlLoader.load();
+
+        AttendanceReportViewController ctrl = fxmlLoader.getController();
+        ctrl.initData(btnAttendanceList.getScene());
+
+        stage.setTitle("Attendance Report");
+        stage.setScene(new Scene(root));
+        stage.sizeToScene();
 
     }
 }

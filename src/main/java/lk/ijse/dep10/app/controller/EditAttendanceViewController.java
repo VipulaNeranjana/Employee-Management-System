@@ -11,10 +11,7 @@ import javafx.stage.Stage;
 import lk.ijse.dep10.app.db.DBConnection;
 import lk.ijse.dep10.app.util.EmployeeAttendance;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Time;
+import java.sql.*;
 
 public class EditAttendanceViewController {
     public Button btnSave;
@@ -66,11 +63,15 @@ public class EditAttendanceViewController {
 
         try {
             Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Attendance SET in_time=?,off_time=? WHERE id=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Attendance SET in_time=?,off_time=? WHERE id=? AND date=?");
+
             preparedStatement.setInt(3, employeeAttendance.getId());
+            preparedStatement.setDate(4, (Date) employeeAttendance.getDate());
             preparedStatement.setTime(1, Time.valueOf(txtSignInTime.getText()));
-            preparedStatement.setTime(2, Time.valueOf(txtSignInTime.getText()));
+            preparedStatement.setTime(2, Time.valueOf(txtSignOutTime.getText()));
             preparedStatement.executeUpdate();
+
+            System.out.println("Data Updated to database");
 
             tblEmployeeAttendance.refresh();
 

@@ -13,11 +13,21 @@
    <children>
       <AnchorPane fx:id="panePanel" prefHeight="496.0" prefWidth="195.0" style="-fx-background-color: grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="imgProfilePicture" fitHeight="150.0" fitWidth="150.0" layoutX="27.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
-            <Label alignment="CENTER" layoutX="20.0" layoutY="170.0" prefHeight="31.0" prefWidth="158.0" text="Welcome" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-               <font>
-                  <Font name="System Bold Italic" size="26.0" />
-               </font></Label>
+            <ImageView fx:id="imgProfilePicture" fitHeight="150.0" fitWidth="150.0" layoutX="27.0" layoutY="19.0" pickOnBounds="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+            <VBox layoutX="20.0" layoutY="170.0" spacing="5.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="158.0" text="Welcome">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblUserName" alignment="CENTER" prefHeight="21.0" prefWidth="158.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
             <Separator layoutX="7.0" layoutY="219.0" prefHeight="9.0" prefWidth="183.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
             <VBox layoutX="28.0" layoutY="238.0" prefHeight="81.0" prefWidth="141.0" spacing="15.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="27.0">
                <children>

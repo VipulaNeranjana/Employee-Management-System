@@ -1,23 +1,25 @@
 CREATE TABLE IF NOT EXISTS Employee (
-    nic VARCHAR(100) UNIQUE NOT NULL ,
+    nic VARCHAR(100) UNIQUE ,
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(200) NOT NULL ,
+    name VARCHAR(200)  ,
     dob DATE  ,
-    contact VARCHAR(200)  ,
-    gender ENUM('MALE','FEMALE')  ,
-    profile_pic MEDIUMBLOB  ,
-    marital_status ENUM('MARRIED','UNMARRIED')  ,
-    address VARCHAR(300)  ,
+    contact VARCHAR(200)   ,
+    gender ENUM('MALE','FEMALE')   ,
+    profile_pic MEDIUMBLOB   ,
+    marital_status ENUM('MARRIED','UNMARRIED')   ,
+    address VARCHAR(300)   ,
     user_type ENUM('USER','ADMIN')  ,
-    nationality VARCHAR(100)  ,
+    nationality VARCHAR(100)   ,
 
 
     user_name VARCHAR(100) UNIQUE  ,
     password VARCHAR(100)  ,
-    designation ENUM('EXECUTIVE','NON-EXECUTIVE')  ,
-    joined_date DATE  ,
-    union_member BOOLEAN  ,
+    designation ENUM('EXECUTIVE','NON-EXECUTIVE')   ,
+    joined_date DATE   ,
+    union_member BOOLEAN   ,
     status ENUM('ACTIVE','INACTIVE')  ,
+
+
 
 
     basic_salary INT NOT NULL ,

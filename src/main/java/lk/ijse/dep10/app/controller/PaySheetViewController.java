@@ -32,6 +32,13 @@ public class PaySheetViewController {
     @FXML
     private DatePicker txtSelectedDate;
     private int employeeId;
+    private String joinedYear;
+    public void getEmployeeId(int id){
+        employeeId = id;
+    }
+    public void getJoinedYear(String year){
+        joinedYear = year;
+    }
 
     @FXML
     void btnBackOnAction(ActionEvent event) throws IOException {
@@ -47,7 +54,6 @@ public class PaySheetViewController {
 
     @FXML
     void btnPrintOnAction(ActionEvent event) throws JRException {
-        employeeId = 1;
         if (txtSelectedDate.getValue() == null){
             new Alert(Alert.AlertType.ERROR,"Please select a date. try again...!").showAndWait();
             return;
@@ -83,10 +89,10 @@ public class PaySheetViewController {
 
                     HashMap<String, Object> reportParams = new HashMap<>();
 
-                    reportParams.put("year", yearDatabase);
-                    reportParams.put("month", monthDatabase.toString());
-                    reportParams.put("id", Integer.toString(employeeId));
-                    reportParams.put("name",name);
+                    reportParams.put("year", ": " + yearDatabase);
+                    reportParams.put("month", ": " + monthDatabase.toString());
+                    reportParams.put("id", ": E-" + joinedYear + "-" + Integer.toString(employeeId));
+                    reportParams.put("name",": " + name);
                     reportParams.put("basic_salary",String.format("%,.2f",(double) basicSalary));
                     reportParams.put("overtime_payment", String.format("%,.2f", (double)overtimePayment));
                     reportParams.put("bonus",String.format("%,.2f", (double)bonus));

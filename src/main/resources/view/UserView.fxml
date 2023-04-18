@@ -41,11 +41,6 @@
                      </font></Button>
                </children>
             </VBox>
-            <Button fx:id="btnBack" layoutX="28.0" layoutY="615.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="33.0" prefWidth="141.0" text="Back" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="27.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
       <VBox layoutX="206.0" layoutY="129.0" spacing="12.0" AnchorPane.leftAnchor="211.0" AnchorPane.rightAnchor="20.0">

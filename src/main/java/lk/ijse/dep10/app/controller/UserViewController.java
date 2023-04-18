@@ -34,7 +34,6 @@ public class UserViewController {
     public Label lblNIC;
     public Label lblName;
     public Label lblID;
-    public Button btnBack;
     public ImageView imgProfilePicture;
     public AnchorPane panePanel;
     public AnchorPane paneRoot;
@@ -116,16 +115,5 @@ public class UserViewController {
         PaySheetViewController controller = fxmlLoader.getController();
         controller.getEmployeeId(employeeId);
         controller.getJoinedYear(joinedYear);
-    }
-
-    public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) btnBack.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/LoginView.fxml"));
-        AnchorPane root  =fxmlLoader.load();
-
-        stage.setScene(new Scene(root));
-        stage.setTitle("Login View Window");
-        stage.show();
-        stage.centerOnScreen();
     }
 }

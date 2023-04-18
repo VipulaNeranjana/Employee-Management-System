@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f97003b-4883-4829-97cc-07c903ea32d1" name="Changes" comment="" />
+    <list default="true" id="4f97003b-4883-4829-97cc-07c903ea32d1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,6 +114,7 @@
       <workItem from="1681274147158" duration="2881000" />
       <workItem from="1681659574052" duration="4029000" />
       <workItem from="1681706645465" duration="16417000" />
+      <workItem from="1681804397041" duration="379000" />
     </task>
     <servers />
   </component>

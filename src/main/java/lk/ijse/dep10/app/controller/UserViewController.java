@@ -45,6 +45,7 @@ public class UserViewController {
     private Button btnPaySheet;
     private int employeeId;
     private String joinedYear;
+    private static final int NUMBER_OF_LEAVES_PER_YEAR = 14;
     public void getEmployeeId(int id){
         employeeId = id;
     }
@@ -86,7 +87,7 @@ public class UserViewController {
                     pendingLeaves += 1;
                 }
             }
-            int remainingLeaves = 14 - approvedLeaves;
+            int remainingLeaves = NUMBER_OF_LEAVES_PER_YEAR - approvedLeaves;
             lblTakenLeaves.setText(approvedLeaves + " leaves have been taken");
             lblPendingLeaves.setText(pendingLeaves + " pending leave requests");
             lblRemainingLeaves.setText(remainingLeaves + " leaves are remaining");

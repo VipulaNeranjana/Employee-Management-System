@@ -1,5 +1,9 @@
 package lk.ijse.dep10.app.model;
 
+import lk.ijse.dep10.app.enumaration.Gender;
+import lk.ijse.dep10.app.enumaration.MaritalStatus;
+import lk.ijse.dep10.app.enumaration.Status;
+import lk.ijse.dep10.app.enumaration.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

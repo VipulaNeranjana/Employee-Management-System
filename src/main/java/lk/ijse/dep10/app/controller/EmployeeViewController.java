@@ -284,11 +284,11 @@ public class EmployeeViewController {
                 isValid = false;
             }
         });
-        txtBankAccount.textProperty().addListener((value, previous, current) -> {
-            txtBankAccount.getStyleClass().remove("invalid");
-            if (!txtBankAccount.getText().matches("[0-9]+")) {
-                txtBankAccount.getStyleClass().add("invalid");
-                txtBankAccount.requestFocus();
+        txtAccountNo.textProperty().addListener((value, previous, current) -> {
+            txtAccountNo.getStyleClass().remove("invalid");
+            if (!txtAccountNo.getText().matches("[0-9]+")) {
+                txtAccountNo.getStyleClass().add("invalid");
+                txtAccountNo.requestFocus();
                 isValid = false;
             }
         });

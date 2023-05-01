@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS Employee (
     nic VARCHAR(100) UNIQUE NOT NULL ,
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT ,
     name VARCHAR(200) NOT NULL ,
     dob DATE NOT NULL ,
     contact VARCHAR(200) NOT NULL ,
@@ -51,8 +51,10 @@ CREATE TABLE IF NOT EXISTS Leaves (
     id INT NOT NULL ,
     leave_date DATE NOT NULL ,
     apply_date DATE NOT NULL ,
+    leave_duration ENUM('FULL_DAY','HALF_DAY') NOT NULL,
     status ENUM('APPROVED','PENDING','REJECTED') NOT NULL ,
     leave_type ENUM('SICK','OTHER') NOT NULL,
+    leave_duration ENUM ('FULL_DAY','HALF_DAY'),
     CONSTRAINT foreign_key3 FOREIGN KEY (id) REFERENCES Employee (id),
     CONSTRAINT composite_key3 PRIMARY KEY (id,leave_date)
 );
@@ -60,6 +62,7 @@ CREATE TABLE IF NOT EXISTS Leaves (
 CREATE TABLE IF NOT EXISTS Leave_Description (
     id INT NOT NULL ,
     leave_date DATE NOT NULL ,
+    reason VARCHAR(500) NOT NULL,
     CONSTRAINT foreign_key4 FOREIGN KEY (id,leave_date) REFERENCES Leaves (id,leave_date),
     CONSTRAINT composite_key4 PRIMARY KEY (id,leave_date)
 );
@@ -75,6 +78,6 @@ CREATE TABLE IF NOT EXISTS Payroll (
     epf DOUBLE NOT NULL ,
     etf DOUBLE NOT NULL ,
     union_fee DOUBLE NOT NULL ,
-    CONSTRAINT foreign_key5 FOREIGN KEY (id) REFERENCES Employee (id),
-    CONSTRAINT composite_key5 PRIMARY KEY (id,date)
+    CONSTRAINT foreign_key5 FOREIGN KEY (id) REFERENCES Employee (id) ,
+    CONSTRAINT composite_key5 PRIMARY KEY (id, date)
 );

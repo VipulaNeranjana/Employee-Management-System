@@ -7,8 +7,9 @@
     <list default="true" id="4f97003b-4883-4829-97cc-07c903ea32d1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/AdminLeaveViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/AdminLeaveViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/AdminViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/LeaveReportViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/LeaveReportViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/LeaveReportView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/LeaveReportView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +120,7 @@
       <workItem from="1682405551687" duration="11000" />
       <workItem from="1682876170538" duration="289000" />
       <workItem from="1682920144191" duration="1856000" />
-      <workItem from="1682928463022" duration="2845000" />
+      <workItem from="1682928463022" duration="4754000" />
     </task>
     <servers />
   </component>

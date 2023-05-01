@@ -164,6 +164,7 @@ public class AdminLeaveViewController {
     }
 
     public void btnViewHistoryOnAction(ActionEvent actionEvent) throws IOException {
+
         Stage stage=(Stage) btnViewHistory.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/LeaveReportView.fxml"));
         AnchorPane root = fxmlLoader.load();

@@ -79,13 +79,6 @@ public class LeaveReportViewController {
             e.printStackTrace();
         }
     }
-
-    @FXML
-    void btnCancelOnAction(ActionEvent event) {
-        Stage stage= (Stage) btnCancel.getScene().getWindow();
-        stage.close();
-    }
-
     public void btnEmployeeOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage=(Stage) btnEmployee.getScene().getWindow();
         URL fxmlFile=this.getClass().getResource("#");

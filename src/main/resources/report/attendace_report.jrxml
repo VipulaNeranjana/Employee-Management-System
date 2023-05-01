@@ -6,7 +6,6 @@
 		<![CDATA[aHJtX2RhdGFiYXNlLmBUZW1wX0F0dGVuZGFuY2VfUmVwb3J0YCBBUyAsNTEsMTUsZThiYWQ4ZGEt
 ZjU2OC00YzNiLWEzMDYtNTZmZTBhMTk4ZDA3Ow==]]>
 	</property>
-	<parameter name="employee_name" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT id,
 	date,
@@ -55,24 +54,6 @@ FROM hrm_database.`Temp_Attendance_Report`]]>
 			</staticText>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="50">
-			<staticText>
-				<reportElement x="0" y="0" width="111" height="50" uuid="26c23029-eb98-4809-8d49-ddfa941b60d3"/>
-				<textElement verticalAlignment="Middle">
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Employee Name:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="111" y="0" width="444" height="48" uuid="507ec941-328d-4770-8db3-b5470ac7559a"/>
-				<textElement verticalAlignment="Middle">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{employee_name}]]></textFieldExpression>
-			</textField>
-		</band>
-	</pageHeader>
 	<columnHeader>
 		<band height="30">
 			<staticText>

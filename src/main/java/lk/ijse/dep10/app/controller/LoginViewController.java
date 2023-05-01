@@ -9,8 +9,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.dep10.app.db.DBConnection;
 
 import java.io.IOException;
+import java.sql.*;
 
 public class LoginViewController {
 
@@ -45,24 +47,50 @@ public class LoginViewController {
 
     @FXML
     void btnLogInOnAction(ActionEvent event) throws IOException {
+        String userName = txtUserName.getText();
+        String passWord = txtPassword.getText();
         Stage stage = (Stage) btnLogIn.getScene().getWindow();
         if (adminLogIn) {
-            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/AdminView.fxml"));
-            AnchorPane root  =fxmlLoader.load();
+            if (userName.equals("USERNAME")&& passWord.equals("PASSWORD")){
+                FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/AdminView.fxml"));
+                AnchorPane root  =fxmlLoader.load();
 
-            stage.setScene(new Scene(root));
-            stage.setTitle("Admin Window");
-            stage.show();
-            stage.centerOnScreen();
-
+                stage.setScene(new Scene(root));
+                stage.setTitle("Admin Window");
+                stage.show();
+                stage.centerOnScreen();
+            }
         } else {
-            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/UserView.fxml"));
-            AnchorPane root  =fxmlLoader.load();
-
-            stage.setScene(new Scene(root));
-            stage.setTitle("User Window");
-            stage.show();
-            stage.centerOnScreen();
+            try {
+                Connection connection = DBConnection.getInstance().getConnection();
+                String sql="select * from Employee where user_name=? ";
+                PreparedStatement stm=connection.prepareStatement(sql);
+                stm.setString(1,userName);
+                ResultSet rst = stm.executeQuery();
+                if(!rst.next()){
+                    txtUserName.getStyleClass().add("invalid");
+                    txtPassword.getStyleClass().add("invalid");
+                    txtUserName.requestFocus();
+                    txtUserName.selectAll();
+                }else{
+                    if(!passWord.equals(rst.getString("password"))  ){
+                        txtUserName.getStyleClass().add("invalid");
+                        txtPassword.getStyleClass().add("invalid");
+                        txtUserName.requestFocus();
+                        txtUserName.selectAll();
+                        return;
+                    }
+                    FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/UserView.fxml"));
+                    AnchorPane root  =fxmlLoader.load();
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("User Window");
+                    stage.show();
+                    stage.setMaximized(true);
+                    stage.centerOnScreen();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
 
         }
 

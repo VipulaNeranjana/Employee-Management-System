@@ -75,5 +75,6 @@ CREATE TABLE IF NOT EXISTS Payroll (
     epf DOUBLE NOT NULL ,
     etf DOUBLE NOT NULL ,
     union_fee DOUBLE NOT NULL ,
-    CONSTRAINT foreign_key5 FOREIGN KEY (id) REFERENCES Employee (id)
+    CONSTRAINT foreign_key5 FOREIGN KEY (id) REFERENCES Employee (id),
+    CONSTRAINT composite_key5 PRIMARY KEY (id,date)
 );

@@ -31,7 +31,7 @@ public class AdminViewController {
     }
 
     @FXML
-    void btnEmployeeOnAction(ActionEvent event) {
+    void btnEmployeeOnAction(ActionEvent event) throws IOException {
 
     }
 
@@ -44,12 +44,13 @@ public class AdminViewController {
         stage.setScene(new Scene(root));
         stage.centerOnScreen();
         stage.setTitle("Admin Leave");
+        stage.setMaximized(true);
         stage.show();
 
     }
 
     @FXML
-    void btnPayrollOnAction(ActionEvent event) {
+    void btnPayrollOnAction(ActionEvent event) throws IOException {
 
     }
 

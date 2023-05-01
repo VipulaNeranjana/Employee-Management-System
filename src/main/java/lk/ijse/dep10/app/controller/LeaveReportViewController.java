@@ -2,14 +2,19 @@ package lk.ijse.dep10.app.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dep10.app.db.DBConnection;
 import lk.ijse.dep10.app.model.Employee;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
 
@@ -26,7 +31,8 @@ public class LeaveReportViewController {
         tblLeaveApprove.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("leaveType"));
         tblLeaveApprove.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("applyDate"));
         tblLeaveApprove.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("leaveDate"));
-        tblLeaveApprove.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("status"));
+        tblLeaveApprove.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("leaveDuration"));
+        tblLeaveApprove.getColumns().get(6).setCellValueFactory(new PropertyValueFactory<>("status"));
 
         loadAllLeaveRequest();
         tblLeaveApprove.getColumns().get(2).getStyleClass().add("center");
@@ -52,8 +58,9 @@ public class LeaveReportViewController {
                 LocalDate applyDate = rstLeaveList.getDate("apply_date").toLocalDate();
                 Employee.Status status = Employee.Status.valueOf(rstLeaveList.getString("status"));
                 Employee.LeaveType leaveType = Employee.LeaveType.valueOf(rstLeaveList.getString("leave_type"));
+                Employee.LeaveDuration leaveDuration=Employee.LeaveDuration.valueOf(rstLeaveList.getString("leave_duration"));
 
-                Employee employee=new Employee(id,null,leaveType,applyDate,leaveDate,status);
+                Employee employee=new Employee(id,null,leaveType,applyDate,leaveDate,leaveDuration,status);
                 stm2.setInt(1,id);
                 ResultSet rstEmployeeList = stm2.executeQuery();
                 while (rstEmployeeList.next()){
@@ -74,4 +81,51 @@ public class LeaveReportViewController {
         stage.close();
     }
 
+    public void btnEmployeeOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage=new Stage();
+        URL fxmlFile=this.getClass().getResource("#");
+        FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
+        AnchorPane root=fxmlLoader.load();
+        stage.setScene(new Scene(root));
+        stage.centerOnScreen();
+        stage.setTitle("#");
+        stage.setMaximized(true);
+        stage.show();
+    }
+
+    public void btnAttendanceOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage=new Stage();
+        URL fxmlFile=this.getClass().getResource("#");
+        FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
+        AnchorPane root=fxmlLoader.load();
+        stage.setScene(new Scene(root));
+        stage.centerOnScreen();
+        stage.setTitle("#");
+        stage.setMaximized(true);
+        stage.show();
+    }
+
+    public void btnLeaveOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage=new Stage();
+        URL fxmlFile=this.getClass().getResource("#");
+        FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
+        AnchorPane root=fxmlLoader.load();
+        stage.setScene(new Scene(root));
+        stage.centerOnScreen();
+        stage.setTitle("#");
+        stage.setMaximized(true);
+        stage.show();
+    }
+
+    public void btnPayrollOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage=new Stage();
+        URL fxmlFile=this.getClass().getResource("#");
+        FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
+        AnchorPane root=fxmlLoader.load();
+        stage.setScene(new Scene(root));
+        stage.centerOnScreen();
+        stage.setTitle("#");
+        stage.setMaximized(true);
+        stage.show();
+    }
 }

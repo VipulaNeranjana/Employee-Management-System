@@ -15,6 +15,7 @@ public class Employee implements Serializable {
     private LeaveType leaveType;
     private LocalDate applyDate;
     private LocalDate leaveDate;
+    private LeaveDuration leaveDuration;
     private Status status;
 
     public enum LeaveType{
@@ -22,5 +23,8 @@ public class Employee implements Serializable {
     }
     public enum Status{
         APPROVED,PENDING,REJECTED
+    }
+    public enum LeaveDuration{
+        FULL_DAY,HALF_DAY
     }
 }

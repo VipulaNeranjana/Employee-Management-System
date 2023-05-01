@@ -7,8 +7,12 @@
     <list default="true" id="4f97003b-4883-4829-97cc-07c903ea32d1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/AdminLeaveViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/AdminLeaveViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/AdminViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/LeaveReportViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/LeaveReportViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/AdminLeaveView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/AdminLeaveView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/AdminLeaveView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/AdminLeaveView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/LeaveReportView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/LeaveReportView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,33 +50,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/janitha/Documents/Phase1/student-form/jdbc-assignment/pom.xml",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/janitha/Documents/final project/Employee-Management-System/pom.xml&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "RunConfigurationTargetLRU": [
-      "76379eea-abba-44f8-8cfd-f889bc8f6f9d/schema/\"hrm_database\""
+    &quot;RunConfigurationTargetLRU&quot;: [
+      &quot;76379eea-abba-44f8-8cfd-f889bc8f6f9d/schema/\&quot;hrm_database\&quot;&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.AppInitializerWrapper">
     <configuration name="AppInitializerWrapper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lk.ijse.dep10.app.AppInitializerWrapper" />
@@ -114,6 +118,12 @@
       <workItem from="1681277474747" duration="11895000" />
       <workItem from="1681400803728" duration="1071000" />
       <workItem from="1681479437902" duration="1033000" />
+      <workItem from="1681880916459" duration="515000" />
+      <workItem from="1681986902692" duration="6000" />
+      <workItem from="1682405551687" duration="11000" />
+      <workItem from="1682876170538" duration="289000" />
+      <workItem from="1682920144191" duration="1856000" />
+      <workItem from="1682928463022" duration="2034000" />
     </task>
     <servers />
   </component>

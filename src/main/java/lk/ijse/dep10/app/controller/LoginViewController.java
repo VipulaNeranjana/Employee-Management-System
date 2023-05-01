@@ -91,6 +91,10 @@ public class LoginViewController {
                 throw new RuntimeException(e);
             }
 
+            UserViewController controller = fxmlLoader.getController();
+            String[] segments = txtUserName.getText().trim().split("-");
+            int id = Integer.parseInt(segments[segments.length-1]);
+            controller.getEmployeeId(id);
         }
 
     }

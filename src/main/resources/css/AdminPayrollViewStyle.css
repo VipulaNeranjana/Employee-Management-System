@@ -1,0 +1,22 @@
+
+#lblMessage {
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+
+.red {
+    -fx-border-color: red;
+    -fx-text-fill: darkred;
+    -fx-background-color: rgba(255, 0, 0, 0.1);
+}
+
+.green {
+    -fx-border-color: green;
+    -fx-text-fill: darkgreen;
+    -fx-background-color: rgba(0, 255, 0, 0.1);
+}
+
+.invalid {
+    -fx-border-color: red !important;
+}

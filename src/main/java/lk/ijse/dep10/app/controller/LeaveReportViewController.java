@@ -81,7 +81,7 @@ public class LeaveReportViewController {
     }
     public void btnEmployeeOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage=(Stage) btnEmployee.getScene().getWindow();
-        URL fxmlFile=this.getClass().getResource("#");
+        URL fxmlFile=this.getClass().getResource("/view/EmployeeView.fxml");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();
         stage.setScene(new Scene(root));
@@ -93,7 +93,7 @@ public class LeaveReportViewController {
 
     public void btnAttendanceOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage=(Stage) btnAttendance.getScene().getWindow();
-        URL fxmlFile=this.getClass().getResource("#");
+        URL fxmlFile=this.getClass().getResource("/view/AdminAttendanceView.fxml");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();
         stage.setScene(new Scene(root));
@@ -105,7 +105,7 @@ public class LeaveReportViewController {
 
     public void btnLeaveOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage=(Stage) btnLeave.getScene().getWindow();
-        URL fxmlFile=this.getClass().getResource("#");
+        URL fxmlFile=this.getClass().getResource("/view/UserLeaveView.fxml");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();
         stage.setScene(new Scene(root));
@@ -117,12 +117,12 @@ public class LeaveReportViewController {
 
     public void btnPayrollOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage=(Stage) btnPayroll.getScene().getWindow();
-        URL fxmlFile=this.getClass().getResource("#");
+        URL fxmlFile=this.getClass().getResource("/view/AdminPayrollView.fxml");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();
         stage.setScene(new Scene(root));
         stage.centerOnScreen();
-        stage.setTitle("#");
+        stage.setTitle("Admin Payroll Management");
         stage.setMaximized(true);
         stage.show();
     }

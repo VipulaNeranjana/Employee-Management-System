@@ -7,12 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 
@@ -54,7 +51,7 @@ public class AdminViewController {
     @FXML
     void btnEmployeeOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnEmployee.getScene().getWindow();
-        stage.setScene(new Scene(new FXMLLoader(getClass().getResource("/view/EmployeeView.fxml")).load()));
+        stage.setScene(new Scene(new FXMLLoader(getClass().getResource("/view/EmployeeTableView.fxml")).load()));
 
     }
 
@@ -74,7 +71,14 @@ public class AdminViewController {
 
     @FXML
     void btnPayrollOnAction(ActionEvent event) {
-
+        Stage stage = (Stage) btnPayroll.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/AdminPayrollView.fxml"))));
+            stage.setTitle("Admin Payroll Management");
+            stage.setMaximized(true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

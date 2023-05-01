@@ -57,8 +57,8 @@ public class LeaveApplicationController {
 
     }
 
-    public void init(SimpleStringProperty input){
-        id = Integer.parseInt(input.getValue());
+    public void init(int input){
+        id = input;
     }
 
     @FXML

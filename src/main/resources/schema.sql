@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Employee (
 
     user_name VARCHAR(100) UNIQUE NOT NULL ,
     password VARCHAR(100) NOT NULL ,
-    designation ENUM('EXECUTIVE','NON-EXECUTIVE') NOT NULL ,
+    designation ENUM('EXECUTIVE','NON_EXECUTIVE') NOT NULL ,
     joined_date DATE NOT NULL ,
     union_member BOOLEAN NOT NULL ,
     status ENUM('ACTIVE','INACTIVE') NOT NULL ,
@@ -54,7 +54,6 @@ CREATE TABLE IF NOT EXISTS Leaves (
     leave_duration ENUM('FULL_DAY','HALF_DAY') NOT NULL,
     status ENUM('APPROVED','PENDING','REJECTED') NOT NULL ,
     leave_type ENUM('SICK','OTHER') NOT NULL,
-    leave_duration ENUM ('FULL_DAY','HALF_DAY'),
     CONSTRAINT foreign_key3 FOREIGN KEY (id) REFERENCES Employee (id),
     CONSTRAINT composite_key3 PRIMARY KEY (id,leave_date)
 );
@@ -78,6 +77,6 @@ CREATE TABLE IF NOT EXISTS Payroll (
     epf DOUBLE NOT NULL ,
     etf DOUBLE NOT NULL ,
     union_fee DOUBLE NOT NULL ,
-    CONSTRAINT foreign_key5 FOREIGN KEY (id) REFERENCES Employee (id),
-    CONSTRAINT composite_key5 PRIMARY KEY (id,date)
+    CONSTRAINT foreign_key5 FOREIGN KEY (id) REFERENCES Employee (id) ,
+    CONSTRAINT composite_key5 PRIMARY KEY (id, date)
 );

@@ -250,7 +250,16 @@
                                     <HBox layoutX="15.0" layoutY="68.0" prefHeight="19.0" prefWidth="280.0">
                                        <children>
                                           <Label minHeight="24.0" minWidth="150.0" text="Designation : " />
-                                          <TextField fx:id="txtDesignation" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                          <HBox spacing="20.0">
+                                             <children>
+                                                <RadioButton fx:id="rdoExecutive" mnemonicParsing="false" text="Executive">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="Designation" />
+                                                   </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton fx:id="rdoNonExecutive" mnemonicParsing="false" text="NonExecutive" toggleGroup="$Designation" />
+                                             </children>
+                                          </HBox>
                                        </children>
                                        <padding>
                                           <Insets right="5.0" />
@@ -279,8 +288,11 @@
                                           <Label minHeight="24.0" minWidth="150.0" text="Status : " />
                                           <HBox spacing="20.0">
                                              <children>
-                                                <RadioButton fx:id="rdoActive" mnemonicParsing="false" text="Active" />
-                                                <RadioButton fx:id="rdoInActive" mnemonicParsing="false" text="Inactive" />
+                                                <RadioButton fx:id="rdoActive" mnemonicParsing="false" text="Active">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="Status" />
+                                                   </toggleGroup></RadioButton>
+                                                <RadioButton fx:id="rdoInActive" mnemonicParsing="false" text="Inactive" toggleGroup="$Status" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -311,7 +323,7 @@
                                     <HBox prefHeight="19.0" prefWidth="280.0">
                                        <children>
                                           <Label minHeight="24.0" minWidth="150.0" text="Basic Salary : " />
-                                          <PasswordField fx:id="txtBasicSalary" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                          <TextField fx:id="txtBasicSalary" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                        </children>
                                        <padding>
                                           <Insets right="5.0" />
@@ -320,7 +332,7 @@
                                     <HBox layoutX="15.0" layoutY="44.0" prefHeight="19.0" prefWidth="280.0">
                                        <children>
                                           <Label minHeight="24.0" minWidth="150.0" text="Bank Name : " />
-                                          <PasswordField fx:id="txtBankAccount" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                          <TextField fx:id="txtBankAccount" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                        </children>
                                        <padding>
                                           <Insets right="5.0" />
@@ -329,7 +341,7 @@
                                     <HBox layoutX="15.0" layoutY="73.0" prefHeight="19.0" prefWidth="280.0">
                                        <children>
                                           <Label minHeight="24.0" minWidth="150.0" text="Account No : " />
-                                          <PasswordField fx:id="txtAccountNo" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                          <TextField fx:id="txtAccountNo" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                        </children>
                                        <padding>
                                           <Insets right="5.0" />
@@ -338,7 +350,7 @@
                                     <HBox layoutX="15.0" layoutY="102.0" prefHeight="19.0" prefWidth="280.0">
                                        <children>
                                           <Label minHeight="24.0" minWidth="150.0" text="Branch Name :" />
-                                          <PasswordField fx:id="txtBranchName" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                          <TextField fx:id="txtBranchName" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                        </children>
                                        <padding>
                                           <Insets right="5.0" />
@@ -372,7 +384,7 @@
                                           <Label minHeight="24.0" minWidth="150.0" text="CV : " />
                                           <HBox spacing="5.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <PasswordField fx:id="txtCVPath" maxWidth="1.7976931348623157E308" />
+                                                <TextField fx:id="txtCVPath" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                                 <Button fx:id="btnAddCv" minWidth="50.0" mnemonicParsing="false" onAction="#btnAddCvOnAction" text="Add" />
                                              </children>
                                           </HBox>
@@ -386,7 +398,7 @@
                                           <Label minHeight="24.0" minWidth="150.0" text="Birth Certificate : " />
                                           <HBox spacing="5.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <PasswordField fx:id="txtBirthCertificatePath" maxWidth="1.7976931348623157E308" />
+                                                <TextField fx:id="txtBirthCertificatePath" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                                 <Button fx:id="btnBirthCertificateAdd" minWidth="50.0" mnemonicParsing="false" onAction="#btnBirthCertificateAddOnAction" text="Add" />
                                              </children>
                                           </HBox>
@@ -400,7 +412,7 @@
                                           <Label minHeight="24.0" minWidth="150.0" text="Offer Latter : " />
                                           <HBox spacing="5.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <PasswordField fx:id="txtOfferLatterPath" maxWidth="1.7976931348623157E308" />
+                                                <TextField fx:id="txtOfferLatterPath" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                                 <Button fx:id="btnOfferLatterAdd" minWidth="50.0" mnemonicParsing="false" onAction="#btnOfferLatterAddOnAction" text="Add" />
                                              </children>
                                           </HBox>
@@ -414,7 +426,7 @@
                                           <Label minHeight="24.0" minWidth="150.0" text="Agreement Latter : " />
                                           <HBox spacing="5.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <PasswordField fx:id="txtAgreementLatterPath" maxWidth="1.7976931348623157E308" />
+                                                <TextField fx:id="txtAgreementLatterPath" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                                 <Button fx:id="btnAgreementLatterAdd" minWidth="50.0" mnemonicParsing="false" onAction="#btnAgreementLatterAddOnAction" text="Add" />
                                              </children>
                                           </HBox>

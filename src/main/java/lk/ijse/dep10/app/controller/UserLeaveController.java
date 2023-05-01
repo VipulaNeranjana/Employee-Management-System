@@ -72,8 +72,8 @@ public class UserLeaveController {
 
     }
 
-    public void init(SimpleStringProperty input){
-            id = Integer.parseInt(input.getValue());
+    public void init(int input){
+            id = input;
     }
 
 
@@ -107,13 +107,19 @@ public class UserLeaveController {
     @FXML
     void btnAddApplicationOnAction(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-        AnchorPane root = FXMLLoader.load(this.getClass().getResource("/view/LeaveApplicationView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/LeaveApplicationView.fxml"));
+        AnchorPane root = fxmlLoader.load();
         stage.setScene(new Scene(root));
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner((Stage) btnAddApplication.getScene().getWindow());
         stage.setTitle("Leave Application");
         stage.show();
         stage.centerOnScreen();
+
+        LeaveApplicationController controller = fxmlLoader.getController();
+        controller.init(id);
+
+
 
     }
 

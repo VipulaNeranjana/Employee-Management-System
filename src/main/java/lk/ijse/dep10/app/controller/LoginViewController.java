@@ -32,6 +32,7 @@ public class LoginViewController {
     private TextField txtUserName;
 
     private boolean adminLogIn;
+//    private FXMLLoader fxmlLoader;
 
     @FXML
     void btnAdminLogInOnAction(ActionEvent event) {
@@ -51,18 +52,9 @@ public class LoginViewController {
         String passWord = txtPassword.getText();
         Stage stage = (Stage) btnLogIn.getScene().getWindow();
         if (adminLogIn) {
-            if (userName.equals("USERNAME")&& passWord.equals("PASSWORD")){
-                FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/AdminView.fxml"));
-                AnchorPane root  =fxmlLoader.load();
-                stage.setScene(new Scene(root));
-                stage.setTitle("Admin Window");
-                stage.show();
-                stage.centerOnScreen();
-            }
-        } else {
             try {
                 Connection connection = DBConnection.getInstance().getConnection();
-                String sql="select * from Employee where user_name=? ";
+                String sql="select * from Employee where user_name=? and user_type='ADMIN'";
                 PreparedStatement stm=connection.prepareStatement(sql);
                 stm.setString(1,userName);
                 ResultSet rst = stm.executeQuery();
@@ -79,6 +71,39 @@ public class LoginViewController {
                         txtUserName.selectAll();
                         return;
                     }
+                    FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/AdminView.fxml"));
+                    AnchorPane root  =fxmlLoader.load();
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("Admin Window");
+                    stage.show();
+                    stage.centerOnScreen();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            try {
+                Connection connection = DBConnection.getInstance().getConnection();
+                String sql="select * from Employee where user_name=? ";
+                PreparedStatement stm=connection.prepareStatement(sql);
+                stm.setString(1,userName);
+                ResultSet rst = stm.executeQuery();
+                if(!rst.next()){
+                    txtUserName.getStyleClass().add("invalid");
+                    txtPassword.getStyleClass().add("invalid");
+                    txtUserName.requestFocus();
+                    txtUserName.selectAll();
+                    System.out.println("1");
+
+                }else{
+                    if(!passWord.equals(rst.getString("password"))  ){
+                        txtUserName.getStyleClass().add("invalid");
+                        txtPassword.getStyleClass().add("invalid");
+                        txtUserName.requestFocus();
+                        txtUserName.selectAll();
+                        System.out.println("2");
+                        return;
+                    }
                     FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/UserView.fxml"));
                     AnchorPane root  =fxmlLoader.load();
                     stage.setScene(new Scene(root));
@@ -86,15 +111,18 @@ public class LoginViewController {
                     stage.show();
                     stage.setMaximized(true);
                     stage.centerOnScreen();
+
+                    int id1 = rst.getInt("id");
+
+                    UserViewController controller = fxmlLoader.getController();
+                    controller.getEmployeeId(id1);
+
+
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
 
-            UserViewController controller = fxmlLoader.getController();
-            String[] segments = txtUserName.getText().trim().split("-");
-            int id = Integer.parseInt(segments[segments.length-1]);
-            controller.getEmployeeId(id);
         }
 
     }

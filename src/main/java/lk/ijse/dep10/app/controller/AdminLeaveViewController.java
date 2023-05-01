@@ -1,7 +1,5 @@
 package lk.ijse.dep10.app.controller;
 
-import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dep10.app.db.DBConnection;
-import lk.ijse.dep10.app.model.Employee;
+import lk.ijse.dep10.app.model.EmployeeLeave;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,7 +32,7 @@ public class AdminLeaveViewController {
     private Button btnReject;
 
     @FXML
-    private TableView<Employee> tblLeaveApprove;
+    private TableView<EmployeeLeave> tblLeaveApprove;
 
 
     public void initialize() {
@@ -79,18 +77,18 @@ public class AdminLeaveViewController {
                 int id = rstLeaveList.getInt("id");
                 LocalDate leaveDate = rstLeaveList.getDate("leave_date").toLocalDate();
                 LocalDate applyDate = rstLeaveList.getDate("apply_date").toLocalDate();
-                Employee.Status status = Employee.Status.valueOf(rstLeaveList.getString("status"));
-                Employee.LeaveType leaveType = Employee.LeaveType.valueOf(rstLeaveList.getString("leave_type"));
-                Employee.LeaveDuration leaveDuration=Employee.LeaveDuration.valueOf(rstLeaveList.getString("leave_duration "));
+                EmployeeLeave.Status status = EmployeeLeave.Status.valueOf(rstLeaveList.getString("status"));
+                EmployeeLeave.LeaveType leaveType = EmployeeLeave.LeaveType.valueOf(rstLeaveList.getString("leave_type"));
+                EmployeeLeave.LeaveDuration leaveDuration= EmployeeLeave.LeaveDuration.valueOf(rstLeaveList.getString("leave_duration "));
 
-                Employee employee = new Employee(id, null, leaveType, applyDate, leaveDate,leaveDuration, status);
+                EmployeeLeave employeeLeave = new EmployeeLeave(id, null, leaveType, applyDate, leaveDate,leaveDuration, status);
                 stm2.setInt(1, id);
                 ResultSet rstEmployeeList = stm2.executeQuery();
                 while (rstEmployeeList.next()) {
                     String name = rstEmployeeList.getString("name");
-                    employee.setName(name);
+                    employeeLeave.setName(name);
                 }
-                tblLeaveApprove.getItems().add(employee);
+                tblLeaveApprove.getItems().add(employeeLeave);
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Can not load leave requests, please try again");
@@ -101,8 +99,8 @@ public class AdminLeaveViewController {
 
     @FXML
     void btnApproveOnAction(ActionEvent event) {
-        Employee selectedLeave = tblLeaveApprove.getSelectionModel().getSelectedItem();
-        selectedLeave.setStatus(Employee.Status.APPROVED);
+        EmployeeLeave selectedLeave = tblLeaveApprove.getSelectionModel().getSelectedItem();
+        selectedLeave.setStatus(EmployeeLeave.Status.APPROVED);
         tblLeaveApprove.refresh();
         try {
             Connection connection = DBConnection.getInstance().getConnection();
@@ -133,8 +131,8 @@ public class AdminLeaveViewController {
 
     @FXML
     void btnRejectOnAction(ActionEvent event) {
-        Employee selectedLeave = tblLeaveApprove.getSelectionModel().getSelectedItem();
-        selectedLeave.setStatus(Employee.Status.REJECTED);
+        EmployeeLeave selectedLeave = tblLeaveApprove.getSelectionModel().getSelectedItem();
+        selectedLeave.setStatus(EmployeeLeave.Status.REJECTED);
         tblLeaveApprove.refresh();
         try {
 

@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 
-public class Employee implements Serializable {
+public class EmployeeLeave implements Serializable {
     private int id;
     private String name;
     private LeaveType leaveType;

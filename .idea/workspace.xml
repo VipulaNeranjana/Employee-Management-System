@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4f97003b-4883-4829-97cc-07c903ea32d1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +49,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/nuwan/Documents/git/team projects/Employee-Management-System/src/main/resources/report&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nuwan/Documents/DEP-10/Phase-1/jasper-reports/hello-jasper&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -117,6 +118,8 @@
       <workItem from="1681804397041" duration="964000" />
       <workItem from="1681838515461" duration="667000" />
       <workItem from="1682405538351" duration="17000" />
+      <workItem from="1682833945617" duration="427000" />
+      <workItem from="1682916872386" duration="4309000" />
     </task>
     <servers />
   </component>

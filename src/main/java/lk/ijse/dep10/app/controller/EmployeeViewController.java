@@ -11,10 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import lk.ijse.dep10.app.db.DBConnection;
-import lk.ijse.dep10.app.enumaration.Gender;
-import lk.ijse.dep10.app.enumaration.MaritalStatus;
-import lk.ijse.dep10.app.enumaration.Status;
-import lk.ijse.dep10.app.enumaration.UserType;
+import lk.ijse.dep10.app.enumaration.*;
 import lk.ijse.dep10.app.model.Employee;
 
 import javax.imageio.ImageIO;
@@ -40,6 +37,8 @@ import java.util.List;
 public class EmployeeViewController {
 
     public Label lblUserName;
+    public RadioButton rdoExecutive;
+    public RadioButton rdoNonExecutive;
     @FXML
     private ToggleGroup Gender;
 
@@ -154,8 +153,6 @@ public class EmployeeViewController {
     @FXML
     private TextField txtContact;
 
-    @FXML
-    private TextField txtDesignation;
 
     @FXML
     private TextField txtFullName;
@@ -252,14 +249,6 @@ public class EmployeeViewController {
                 isValid = false;
             }
         });
-        txtDesignation.textProperty().addListener((value, previous, current) -> {
-            txtDesignation.getStyleClass().remove("invalid");
-            if (!txtDesignation.getText().matches("[A-Za-z]{3,}")) {
-                txtDesignation.getStyleClass().add("invalid");
-                txtDesignation.requestFocus();
-                isValid = false;
-            }
-        });
         calJoinedDate.valueProperty().addListener((value, previous, current) -> {
             calJoinedDate.getStyleClass().remove("invalid");
             if (calJoinedDate.getValue() == null || calJoinedDate.getValue().isBefore(LocalDate.now().minusDays(30))) {
@@ -284,11 +273,11 @@ public class EmployeeViewController {
                 isValid = false;
             }
         });
-        txtBankAccount.textProperty().addListener((value, previous, current) -> {
-            txtBankAccount.getStyleClass().remove("invalid");
-            if (!txtBankAccount.getText().matches("[0-9]+")) {
-                txtBankAccount.getStyleClass().add("invalid");
-                txtBankAccount.requestFocus();
+        txtAccountNo.textProperty().addListener((value, previous, current) -> {
+            txtAccountNo.getStyleClass().remove("invalid");
+            if (!txtAccountNo.getText().matches("[0-9]+")) {
+                txtAccountNo.getStyleClass().add("invalid");
+                txtAccountNo.requestFocus();
                 isValid = false;
             }
         });
@@ -396,7 +385,7 @@ public class EmployeeViewController {
     void btnNewEmployeeOnAction(ActionEvent event) throws URISyntaxException, MalformedURLException {
         List<Node> nodes = Arrays.asList(txtAccountNo,txtAddress,txtBankAccount,
                 txtId,txtContact,txtAgreementLatterPath,txtBasicSalary,
-                txtBirthCertificatePath,txtBranchName,txtCVPath,txtDesignation,
+                txtBirthCertificatePath,txtBranchName,txtCVPath,
                 txtBankAccount,txtFullName,txtNationality,txtNicNo,txtOfferLatterPath,
                 txtPassword,txtUserName,calDob,calJoinedDate);
         TextField textField = null;
@@ -412,6 +401,8 @@ public class EmployeeViewController {
                 datePicker.getStyleClass().remove("invalid");
             }
         }
+        rdoExecutive.setSelected(false);
+        rdoNonExecutive.setSelected(false);
         rdoActive.setSelected(false);
         rdoInActive.setSelected(false);
         rdoAdmin.setSelected(false);
@@ -427,6 +418,8 @@ public class EmployeeViewController {
         birthCertificate = null;
         offerLatter = null;
         agreementLatter = null;
+
+        txtFullName.requestFocus();
     }
 
     @FXML
@@ -482,15 +475,31 @@ public class EmployeeViewController {
             byte[] agreementBytes = fileInputStream.readAllBytes();
             SerialBlob agreementBlob = new SerialBlob(agreementBytes);
 
-            Employee employee = new Employee(txtNicNo.getText(), Integer.parseInt(txtId.getText()), txtFullName.getText(), Date.valueOf(calDob.getValue()), txtContact.getText(),
-                    lk.ijse.dep10.app.enumaration.Gender.valueOf(rdoMale.getToggleGroup().getSelectedToggle().toString()), imageBlob,
-                    lk.ijse.dep10.app.enumaration.MaritalStatus.valueOf(rdoMarried.getToggleGroup().getSelectedToggle().toString()),
-                    txtAddress.getText(), lk.ijse.dep10.app.enumaration.UserType.valueOf(rdoUser.getToggleGroup().getSelectedToggle().toString()),
-                    txtNationality.getText(), txtUserName.getText(), txtPassword.getText(), txtDesignation.getText(), Date.valueOf(calJoinedDate.getValue()), chbUnionMember.isSelected(),
-                    Status.valueOf(rdoActive.getToggleGroup().getSelectedToggle().toString()),
-                    Integer.parseInt(txtBasicSalary.getText()), txtBankAccount.getText(), Integer.parseInt(txtAccountNo.getText()), txtBranchName.getText(),
-                    cvBlob, birthBlob,
-                    offerBlob, agreementBlob);
+            Employee employee = new Employee(
+                    txtNicNo.getText(),
+                    txtFullName.getText(),
+                    Date.valueOf(calDob.getValue()),
+                    txtContact.getText(),
+                    rdoMale.getToggleGroup().getSelectedToggle().equals(rdoMale)? lk.ijse.dep10.app.enumaration.Gender.MALE : lk.ijse.dep10.app.enumaration.Gender.FEMALE,
+                    imageBlob,
+                    rdoMarried.getToggleGroup().getSelectedToggle().equals(rdoMarried)? lk.ijse.dep10.app.enumaration.MaritalStatus.MARRIED : lk.ijse.dep10.app.enumaration.MaritalStatus.UNMARRIED,
+                    txtAddress.getText(),
+                    rdoUser.getToggleGroup().getSelectedToggle().equals(rdoAdmin)? lk.ijse.dep10.app.enumaration.UserType.ADMIN : lk.ijse.dep10.app.enumaration.UserType.USER,
+                    txtNationality.getText(),
+                    txtUserName.getText(),
+                    txtPassword.getText(),
+                    rdoExecutive.getToggleGroup().getSelectedToggle().equals(rdoExecutive)? Designation.EXECUTIVE : Designation.NON_EXECUTIVE,
+                    Date.valueOf(calJoinedDate.getValue()),
+                    chbUnionMember.isSelected(),
+                    rdoActive.getToggleGroup().getSelectedToggle().equals(rdoActive)? Status.ACTIVE : Status.INACTIVE,
+                    Integer.parseInt(txtBasicSalary.getText()),
+                    txtBankAccount.getText(),
+                    Integer.parseInt(txtAccountNo.getText()),
+                    txtBranchName.getText(),
+                    cvBlob,
+                    birthBlob,
+                    offerBlob,
+                    agreementBlob);
 
 
 
@@ -507,7 +516,7 @@ public class EmployeeViewController {
             statement.setString(10,employee.getNationality());
             statement.setString(11,employee.getUserName());
             statement.setString(12,employee.getPassword());
-            statement.setString(13,employee.getDesignation());
+            statement.setString(13,employee.getDesignation().name());
             statement.setDate(14,employee.getJoinedDate());
             statement.setBoolean(15,employee.isUnionMember());
             statement.setString(16,employee.getStatus().toString());
@@ -539,9 +548,9 @@ public class EmployeeViewController {
     }
 
     private boolean checkValidity() throws URISyntaxException, MalformedURLException {
-        List<RadioButton> radioButtons = Arrays.asList(rdoActive, rdoAdmin,rdoMarried, rdoMale);
+        List<RadioButton> radioButtons = Arrays.asList(rdoActive, rdoAdmin,rdoMarried, rdoMale,rdoExecutive);
         for (RadioButton radioButton : radioButtons) {
-            if(!radioButton.isSelected()){
+            if(!radioButton.getToggleGroup().getSelectedToggle().isSelected()){
                 radioButton.requestFocus();
                 isValid = false;
             }

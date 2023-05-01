@@ -174,50 +174,38 @@ public class AdminLeaveViewController {
     }
 
     public void btnEmployeeOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage=(Stage) btnEmployee.getScene().getWindow();
-        URL fxmlFile=this.getClass().getResource("#");
-        FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
-        AnchorPane root=fxmlLoader.load();
-        stage.setScene(new Scene(root));
-        stage.centerOnScreen();
-        stage.setTitle("#");
+        Stage stage = (Stage) btnEmployee.getScene().getWindow();
+        stage.setScene(new Scene(new FXMLLoader(getClass().getResource("/view/EmployeeView.fxml")).load()));
+        stage.setTitle("Add Employee");
         stage.setMaximized(true);
-        stage.show();
     }
 
     public void btnPayrollOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage=(Stage) btnPayroll.getScene().getWindow();
-        URL fxmlFile=this.getClass().getResource("#");
-        FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
-        AnchorPane root=fxmlLoader.load();
-        stage.setScene(new Scene(root));
-        stage.centerOnScreen();
-        stage.setTitle("#");
+        Stage stage = (Stage) btnPayroll.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/AdminPayrollView.fxml"))));
+        stage.setTitle("Admin Payroll Management");
         stage.setMaximized(true);
-        stage.show();
     }
 
     public void btnLeaveOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage=(Stage) btnLeave.getScene().getWindow();
-        URL fxmlFile=this.getClass().getResource("#");
+        URL fxmlFile=this.getClass().getResource("/view/AdminLeaveView.fxml");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();
         stage.setScene(new Scene(root));
         stage.centerOnScreen();
-        stage.setTitle("#");
+        stage.setTitle("Admin Leave");
         stage.setMaximized(true);
-        stage.show();
     }
 
     public void btnAttendanceOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage=(Stage) btnAttendance.getScene().getWindow();
-        URL fxmlFile=this.getClass().getResource("#");
-        FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
-        AnchorPane root=fxmlLoader.load();
+        Stage stage = (Stage) btnAttendance.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/AdminAttendanceView.fxml"));
+        AnchorPane root = fxmlLoader.load();
+        AdminAttendanceViewController ctrl = fxmlLoader.getController();
+        ctrl.initData(btnAttendance.getScene());
+        stage.setTitle("Admin Attendance View");
         stage.setScene(new Scene(root));
-        stage.centerOnScreen();
-        stage.setTitle("#");
         stage.setMaximized(true);
-        stage.show();
     }
 }

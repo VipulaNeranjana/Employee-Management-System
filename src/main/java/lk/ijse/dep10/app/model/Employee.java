@@ -1,5 +1,6 @@
 package lk.ijse.dep10.app.model;
 
+import lk.ijse.dep10.app.enumaration.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.sql.Date;
 @NoArgsConstructor
 public class Employee implements Serializable {
     private String nic;
-    private int id;
+//    private int id;
     private String name;
     private Date date;
     private String contact;
@@ -24,7 +25,7 @@ public class Employee implements Serializable {
     private String nationality;
     private String userName;
     private String password;
-    private String designation;
+    private Enum<Designation> designation;
     private Date joinedDate;
     private boolean unionMember;
     private Enum<Status> status;

@@ -32,6 +32,7 @@ public class LoginViewController {
     private TextField txtUserName;
 
     private boolean adminLogIn;
+//    private FXMLLoader fxmlLoader;
 
     @FXML
     void btnAdminLogInOnAction(ActionEvent event) {
@@ -71,12 +72,15 @@ public class LoginViewController {
                     txtPassword.getStyleClass().add("invalid");
                     txtUserName.requestFocus();
                     txtUserName.selectAll();
+                    System.out.println("1");
+
                 }else{
                     if(!passWord.equals(rst.getString("password"))  ){
                         txtUserName.getStyleClass().add("invalid");
                         txtPassword.getStyleClass().add("invalid");
                         txtUserName.requestFocus();
                         txtUserName.selectAll();
+                        System.out.println("2");
                         return;
                     }
                     FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/UserView.fxml"));
@@ -86,15 +90,18 @@ public class LoginViewController {
                     stage.show();
                     stage.setMaximized(true);
                     stage.centerOnScreen();
+
+                    int id1 = rst.getInt("id");
+
+                    UserViewController controller = fxmlLoader.getController();
+                    controller.getEmployeeId(id1);
+
+
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
 
-            UserViewController controller = fxmlLoader.getController();
-            String[] segments = txtUserName.getText().trim().split("-");
-            int id = Integer.parseInt(segments[segments.length-1]);
-            controller.getEmployeeId(id);
         }
 
     }

@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dep10.app.model.Payroll;
 import lk.ijse.dep10.app.db.DBConnection;
@@ -20,6 +21,7 @@ import lk.ijse.dep10.app.db.DBConnection;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -575,14 +577,33 @@ public class AdminPayrollViewController {
         }
     }
 
-    public void btnEmployeeOnAction(ActionEvent actionEvent) {
-
+    public void btnEmployeeOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) btnEmployee.getScene().getWindow();
+        stage.setScene(new Scene(new FXMLLoader(getClass().getResource("/view/EmployeeView.fxml")).load()));
+        stage.setTitle("Add Employee");
+        stage.setMaximized(true);
     }
 
-    public void btnAttendanceOnAction(ActionEvent actionEvent) {
+    public void btnAttendanceOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) btnAttendance.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/AdminAttendanceView.fxml"));
+        AnchorPane root = fxmlLoader.load();
+        AdminAttendanceViewController ctrl = fxmlLoader.getController();
+        ctrl.initData(btnAttendance.getScene());
+        stage.setTitle("Admin Attendance View");
+        stage.setScene(new Scene(root));
+        stage.setMaximized(true);
     }
 
-    public void btnLeaveOnAction(ActionEvent actionEvent) {
+    public void btnLeaveOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage=(Stage) btnLeave.getScene().getWindow();
+        URL fxmlFile=this.getClass().getResource("/view/AdminLeaveView.fxml");
+        FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
+        AnchorPane root=fxmlLoader.load();
+        stage.setScene(new Scene(root));
+        stage.centerOnScreen();
+        stage.setTitle("Admin Leave Management");
+        stage.setMaximized(true);
     }
 
     public void btnPayrollOnAction(ActionEvent actionEvent) {

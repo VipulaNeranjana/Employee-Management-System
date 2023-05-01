@@ -1,5 +1,6 @@
 package lk.ijse.dep10.app.controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,6 +27,7 @@ import java.sql.*;
 
 public class UserViewController {
 
+    private static final int NUMBER_OF_LEAVES_PER_YEAR = 14;
     public Label lblRemainingLeaves;
     public Label lblPendingLeaves;
     public Label lblTakenLeaves;
@@ -47,50 +50,57 @@ public class UserViewController {
     public Label lblUserName;
     @FXML
     private Button btnLeave;
-
     @FXML
     private Button btnPaySheet;
     private int employeeId;
     private String joinedYear;
-    private static final int NUMBER_OF_LEAVES_PER_YEAR = 14;
-    public void getEmployeeId(int id){
+
+    public void getEmployeeId(int id) {
         employeeId = id;
     }
+
     public void initialize() throws IOException {
+
+        Platform.runLater(() -> loadData());
+
+    }
+
+    private void loadData() {
         Connection connection = DBConnection.getInstance().getConnection();
+
         try {
             PreparedStatement stm1 = connection.prepareStatement("SELECT * FROM Employee WHERE id = ?");
-            stm1.setInt(1,employeeId);
+            stm1.setInt(1, employeeId);
             ResultSet rst1 = stm1.executeQuery();
-            if (rst1.next()){
+            if (rst1.next()) {
                 joinedYear = Integer.toString(rst1.getDate("joined_date").toLocalDate().getYear());
 
                 lblUserName.setText(rst1.getString("user_name"));
-                imgProfilePicture.setImage(new Image(rst1.getBlob("profile_pic").getBinaryStream(),150,150,true,true));
+                imgProfilePicture.setImage(new Image(rst1.getBlob("profile_pic").getBinaryStream(), 150, 150, true, true));
                 lblID.setText(": " + "E-" + joinedYear + "-" + employeeId);
                 lblName.setText(": " + rst1.getString("name"));
                 lblNIC.setText(": " + rst1.getString("nic"));
                 lblDOB.setText(": " + rst1.getDate("dob").toLocalDate().toString());
                 lblAddress.setText(": " + rst1.getString("address"));
                 lblContact.setText(": " + rst1.getString("contact"));
-                lblGender.setText(": " + (rst1.getString("gender").equals("MALE")?"Male":"Female"));
-                lblMaritalStatus.setText(": " + (rst1.getString("marital_status").equals("MARRIED")?"Married":"Unmarried"));
+                lblGender.setText(": " + (rst1.getString("gender").equals("MALE") ? "Male" : "Female"));
+                lblMaritalStatus.setText(": " + (rst1.getString("marital_status").equals("MARRIED") ? "Married" : "Unmarried"));
                 lblNationality.setText(": " + rst1.getString("nationality"));
                 lblJoinedDate.setText(": " + rst1.getDate("joined_date").toLocalDate().toString());
-                lblDesignation.setText(": " + (rst1.getString("designation").equals("EXECUTIVE")?"Executive":"Non-executive"));
+                lblDesignation.setText(": " + (rst1.getString("designation").equals("EXECUTIVE") ? "Executive" : "Non-executive"));
                 lblBasicSalary.setText(": Rs. " + rst1.getInt("basic_salary") + " /=");
-                lblUnionMember.setText(": " + (rst1.getInt("union_member") == 1?"Yes":"No"));
+                lblUnionMember.setText(": " + (rst1.getInt("union_member") == 1 ? "Yes" : "No"));
             }
             PreparedStatement stm2 = connection.prepareStatement("SELECT * FROM Leaves WHERE id = ?");
             stm2.setInt(1, employeeId);
             ResultSet rst2 = stm2.executeQuery();
             int approvedLeaves = 0;
             int pendingLeaves = 0;
-            while (rst2.next()){
-                if (rst2.getString("status").equals("APPROVED")){
+            while (rst2.next()) {
+                if (rst2.getString("status").equals("APPROVED")) {
                     approvedLeaves += 1;
                 }
-                if (rst2.getString("status").equals("PENDING")){
+                if (rst2.getString("status").equals("PENDING")) {
                     pendingLeaves += 1;
                 }
             }
@@ -99,7 +109,7 @@ public class UserViewController {
             lblPendingLeaves.setText(pendingLeaves + " pending leave requests");
             lblRemainingLeaves.setText(remainingLeaves + " leaves are remaining");
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,"Unable to get the employee. try again...!").showAndWait();
+            new Alert(Alert.AlertType.ERROR, "Unable to get the employee. try again...!").showAndWait();
             throw new RuntimeException(e);
         }
     }
@@ -115,7 +125,8 @@ public class UserViewController {
         stage.show();
         stage.centerOnScreen();
 
-
+        UserLeaveController controller = fxmlLoader.getController();
+        controller.init(employeeId);
 
 
     }
@@ -124,7 +135,7 @@ public class UserViewController {
     void btnPaySheetOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnPaySheet.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/PaySheetView.fxml"));
-        AnchorPane root  =fxmlLoader.load();
+        AnchorPane root = fxmlLoader.load();
 
         stage.setScene(new Scene(root));
         stage.setTitle("Pay Sheet Window");

@@ -17,13 +17,13 @@ CREATE TABLE IF NOT EXISTS Employee (
     designation ENUM('EXECUTIVE','NON-EXECUTIVE') NOT NULL ,
     joined_date DATE NOT NULL ,
     union_member BOOLEAN NOT NULL ,
-    status ENUM('ACTIVE','INACTIVE') NOT NULL ,
+    status ENUM('ACTIVE','INACTIVE') NOT NULL  ,
 
 
     basic_salary INT NOT NULL ,
     bank_name VARCHAR(100) NOT NULL ,
     account_no INT NOT NULL ,
-    branch_name VARCHAR(200) NOT NULL ,
+    branch_name VARCHAR(200) NOT NULL  ,
 
 
     cv LONGBLOB NOT NULL ,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS Attendance (
 CREATE TABLE IF NOT EXISTS Leaves (
     id INT NOT NULL ,
     leave_date DATE NOT NULL ,
-    apply_date DATE NOT NULL ,
+    apply_date DATE  ,
     status ENUM('APPROVED','PENDING','REJECTED') NOT NULL ,
     leave_type ENUM('SICK','OTHER') NOT NULL,
     CONSTRAINT foreign_key3 FOREIGN KEY (id) REFERENCES Employee (id),

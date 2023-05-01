@@ -52,6 +52,7 @@ public class LoginViewController {
 
             stage.setScene(new Scene(root));
             stage.setTitle("Admin Window");
+
             stage.show();
             stage.centerOnScreen();
 

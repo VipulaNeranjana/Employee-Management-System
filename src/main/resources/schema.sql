@@ -1,4 +1,3 @@
-
 CREATE TABLE IF NOT EXISTS Employee (
     nic VARCHAR(100) UNIQUE NOT NULL ,
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -18,13 +17,13 @@ CREATE TABLE IF NOT EXISTS Employee (
     designation ENUM('EXECUTIVE','NON-EXECUTIVE') NOT NULL ,
     joined_date DATE NOT NULL ,
     union_member BOOLEAN NOT NULL ,
-    status ENUM('ACTIVE','INACTIVE') NOT NULL  ,
+    status ENUM('ACTIVE','INACTIVE') NOT NULL ,
 
 
     basic_salary INT NOT NULL ,
     bank_name VARCHAR(100) NOT NULL ,
     account_no INT NOT NULL ,
-    branch_name VARCHAR(200) NOT NULL  ,
+    branch_name VARCHAR(200) NOT NULL ,
 
 
     cv LONGBLOB NOT NULL ,
@@ -47,11 +46,12 @@ CREATE TABLE IF NOT EXISTS Attendance (
     CONSTRAINT foreign_key2 FOREIGN KEY (id) REFERENCES Employee (id),
     CONSTRAINT composite_key2 PRIMARY KEY (id,date)
 );
-# DROP TABLE Leaves;
+
 CREATE TABLE IF NOT EXISTS Leaves (
     id INT NOT NULL ,
     leave_date DATE NOT NULL ,
-    apply_date DATE  ,
+    apply_date DATE NOT NULL ,
+    leave_duration ENUM('FULL_DAY','HALF_DAY') NOT NULL,
     status ENUM('APPROVED','PENDING','REJECTED') NOT NULL ,
     leave_type ENUM('SICK','OTHER') NOT NULL,
     leave_duration ENUM ('FULL_DAY','HALF_DAY'),
@@ -59,10 +59,10 @@ CREATE TABLE IF NOT EXISTS Leaves (
     CONSTRAINT composite_key3 PRIMARY KEY (id,leave_date)
 );
 
-# drop TABLE Leave_Description;
 CREATE TABLE IF NOT EXISTS Leave_Description (
     id INT NOT NULL ,
     leave_date DATE NOT NULL ,
+    reason VARCHAR(500) NOT NULL,
     CONSTRAINT foreign_key4 FOREIGN KEY (id,leave_date) REFERENCES Leaves (id,leave_date),
     CONSTRAINT composite_key4 PRIMARY KEY (id,leave_date)
 );

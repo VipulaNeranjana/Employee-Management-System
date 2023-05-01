@@ -1,3 +1,4 @@
+
 CREATE TABLE IF NOT EXISTS Employee (
     nic VARCHAR(100) UNIQUE NOT NULL ,
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -46,17 +47,19 @@ CREATE TABLE IF NOT EXISTS Attendance (
     CONSTRAINT foreign_key2 FOREIGN KEY (id) REFERENCES Employee (id),
     CONSTRAINT composite_key2 PRIMARY KEY (id,date)
 );
-
+# DROP TABLE Leaves;
 CREATE TABLE IF NOT EXISTS Leaves (
     id INT NOT NULL ,
     leave_date DATE NOT NULL ,
     apply_date DATE  ,
     status ENUM('APPROVED','PENDING','REJECTED') NOT NULL ,
     leave_type ENUM('SICK','OTHER') NOT NULL,
+    leave_duration ENUM ('FULL_DAY','HALF_DAY'),
     CONSTRAINT foreign_key3 FOREIGN KEY (id) REFERENCES Employee (id),
     CONSTRAINT composite_key3 PRIMARY KEY (id,leave_date)
 );
 
+# drop TABLE Leave_Description;
 CREATE TABLE IF NOT EXISTS Leave_Description (
     id INT NOT NULL ,
     leave_date DATE NOT NULL ,

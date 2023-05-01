@@ -10,6 +10,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
 
 public class AdminViewController {
 
@@ -54,7 +59,16 @@ public class AdminViewController {
     }
 
     @FXML
-    void btnLeaveOnAction(ActionEvent event) {
+    void btnLeaveOnAction(ActionEvent event) throws IOException {
+        Stage stage=(Stage) btnLeave.getScene().getWindow();
+        URL fxmlFile=this.getClass().getResource("/view/AdminLeaveView.fxml");
+        FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
+        AnchorPane root=fxmlLoader.load();
+        stage.setScene(new Scene(root));
+        stage.centerOnScreen();
+        stage.setTitle("Admin Leave");
+        stage.setMaximized(true);
+        stage.show();
 
     }
 

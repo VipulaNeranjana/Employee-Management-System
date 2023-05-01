@@ -51,7 +51,7 @@ public class AdminViewController {
     @FXML
     void btnEmployeeOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnEmployee.getScene().getWindow();
-        stage.setScene(new Scene(new FXMLLoader(getClass().getResource("/view/EmployeeView.fxml")).load()));
+        stage.setScene(new Scene(new FXMLLoader(getClass().getResource("/view/EmployeeTableView.fxml")).load()));
 
     }
 

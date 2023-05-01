@@ -63,10 +63,10 @@ public class EmployeeTableViewController {
         txtSearch.textProperty().addListener((value, previous, current) -> {
             Connection connection = DBConnection.getInstance().getConnection();
             try {
-                Statement statement = connection.createStatement();
-                String sql = "SELECT * FROM Employee WHERE name LIKE '%1$s' OR id LIKE '%1$s'";
-                String.format(sql, "%"+current+"%");
-                ResultSet resultSet = statement.executeQuery(sql);
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM Employee WHERE name LIKE CONCAT('%', ?, '%') OR id LIKE CONCAT('%', ?, '%')");
+                statement.setString(1, current);
+                statement.setString(2, current);
+                ResultSet resultSet = statement.executeQuery();
 
                 ObservableList<EmployeeTable> searchEmployeeList = tblEmployees.getItems();
                 searchEmployeeList.clear();
@@ -96,7 +96,7 @@ public class EmployeeTableViewController {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
-                String contact = resultSet.getString("name");
+                String contact = resultSet.getString("contact");
 
                 EmployeeTable employee = new EmployeeTable(id, name, contact);
                 employeeList.add(employee);
@@ -109,8 +109,7 @@ public class EmployeeTableViewController {
     }
     @FXML
     void btnAttendanceOnAction(ActionEvent event) throws IOException {
-        Stage stage = (Stage) btnChange.getScene().getWindow();
-        stage.setScene(new Scene(new FXMLLoader(getClass().getResource("/view/EmployeeView.fxml")).load()));
+
     }
 
     @FXML
@@ -129,8 +128,9 @@ public class EmployeeTableViewController {
     }
 
     @FXML
-    void btnNewOnAction(ActionEvent event) {
-
+    void btnNewOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnNew.getScene().getWindow();
+        stage.setScene(new Scene(new FXMLLoader(getClass().getResource("/view/EmployeeView.fxml")).load()));
     }
 
     @FXML

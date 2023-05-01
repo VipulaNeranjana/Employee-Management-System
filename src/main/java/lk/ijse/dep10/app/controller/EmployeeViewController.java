@@ -127,28 +127,28 @@ public class EmployeeViewController {
     private RadioButton tdoFemale;
 
     @FXML
-    private PasswordField txtAccountNo;
+    private TextField txtAccountNo;
 
     @FXML
     private TextField txtAddress;
 
     @FXML
-    private PasswordField txtAgreementLatterPath;
+    private TextField txtAgreementLatterPath;
 
     @FXML
-    private PasswordField txtBankAccount;
+    private TextField txtBankAccount;
 
     @FXML
-    private PasswordField txtBasicSalary;
+    private TextField txtBasicSalary;
 
     @FXML
-    private PasswordField txtBirthCertificatePath;
+    private TextField txtBirthCertificatePath;
 
     @FXML
-    private PasswordField txtBranchName;
+    private TextField txtBranchName;
 
     @FXML
-    private PasswordField txtCVPath;
+    private TextField txtCVPath;
 
     @FXML
     private TextField txtContact;
@@ -167,7 +167,7 @@ public class EmployeeViewController {
     private TextField txtNicNo;
 
     @FXML
-    private PasswordField txtOfferLatterPath;
+    private TextField txtOfferLatterPath;
 
     @FXML
     private PasswordField txtPassword;

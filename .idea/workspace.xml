@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f97003b-4883-4829-97cc-07c903ea32d1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/backward.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/home-icon-silhouette.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/plus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/remove.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/search-interface-symbol.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/LeaveApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/LeaveApplicationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/UserLeaveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/UserLeaveController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/model/Leave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/model/Leave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/UserViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dep10/app/controller/UserViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/UserLeaveView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/UserLeaveView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/UserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/UserView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +57,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/thusitha/Documents/GIt/Employee-Management-System/src/main/resources/img",
+    "last_opened_file_path": "/home/thusitha/Documents/DEP/phase2/jakarta-ee/hello-servlet",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,7 +68,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -124,6 +120,9 @@
       <workItem from="1681204249060" duration="3813000" />
       <workItem from="1681208758934" duration="22564000" />
       <workItem from="1681278112670" duration="12519000" />
+      <workItem from="1682673142762" duration="1285000" />
+      <workItem from="1682919881166" duration="5209000" />
+      <workItem from="1682933465289" duration="3462000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,6 @@
 package lk.ijse.dep10.app.controller;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -38,9 +39,8 @@ public class LeaveApplicationController {
     @FXML
     private TextArea txtReason;
 
-    //TODO Should get user id
 
-    private int id = 123;
+    private int id;
 
     public void initialize() {
         cmbLeaveType.getItems().addAll("Sick", "Other");
@@ -55,6 +55,10 @@ public class LeaveApplicationController {
 
         });
 
+    }
+
+    public void init(SimpleStringProperty input){
+        id = Integer.parseInt(input.getValue());
     }
 
     @FXML

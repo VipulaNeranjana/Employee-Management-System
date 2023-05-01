@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="496.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.app.controller.UserViewController">
    <children>
-      <AnchorPane prefHeight="496.0" prefWidth="195.0" style="-fx-background-color: grey;">
+      <AnchorPane prefHeight="496.0" prefWidth="195.0" style="-fx-background-color: grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="116.0" fitWidth="154.0" layoutX="40.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                <image>

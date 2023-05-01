@@ -1,5 +1,6 @@
 package lk.ijse.dep10.app.controller;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,9 +44,8 @@ public class UserLeaveController {
     @FXML
     private TextField txtSearch;
 
-    //TODO should add id here
 
-    private int id = 123;
+    private int id;
 
     public void initialize() {
 
@@ -71,6 +71,11 @@ public class UserLeaveController {
         });
 
     }
+
+    public void init(SimpleStringProperty input){
+            id = Integer.parseInt(input.getValue());
+    }
+
 
     private void loadActiveLeaveTable() {
         Connection connection = DBConnection.getInstance().getConnection();
@@ -212,21 +217,23 @@ public class UserLeaveController {
 
 
     }
-    public void btnHomeOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) btnAddApplication.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/UserView.fxml"));
-        AnchorPane root = fxmlLoader.load();
-
-        stage.setScene(new Scene(root));
-        stage.setTitle("User Window");
-        stage.show();
-        stage.centerOnScreen();
-
-    }
     public void btnBackOnAction(ActionEvent actionEvent) {
         leaveSheet.setVisible(false);
         leaveApplication.setVisible(true);
 
+
+    }
+
+
+    public void btnPaySheetOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) btnRemove.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/PaySheetView.fxml"));
+        AnchorPane root = fxmlLoader.load();
+
+        stage.setScene(new Scene(root));
+        stage.setTitle("Leave Window");
+        stage.show();
+        stage.centerOnScreen();
 
     }
 }

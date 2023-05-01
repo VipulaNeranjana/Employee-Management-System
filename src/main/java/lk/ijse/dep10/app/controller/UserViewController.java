@@ -23,7 +23,7 @@ public class UserViewController {
     void btnLeaveOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnLeave.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/UserLeaveView.fxml"));
-        StackPane root = fxmlLoader.load();
+        AnchorPane root = fxmlLoader.load();
 
         stage.setScene(new Scene(root));
         stage.setTitle("Leave Window");

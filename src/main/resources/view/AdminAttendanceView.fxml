@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="553.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.app.controller.AdminAttendanceViewController">
+   <children>
+      <Button fx:id="btnBack" layoutX="524.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBackOnAction" text="BACK" />
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="477.0" prefWidth="209.0" style="-fx-background-color: Grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="74.0" layoutY="107.0" text="Attendance" />
+            <Label layoutX="26.0" layoutY="133.0" text="Gayashan">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="86.0" fitWidth="138.0" layoutX="62.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/group.png" />
+               </image>
+            </ImageView>
+            <Separator layoutX="14.0" layoutY="168.0" prefHeight="6.0" prefWidth="179.0" />
+            <VBox layoutX="30.0" layoutY="185.0">
+               <children>
+                  <Button fx:id="btnAttendanceList" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAttendanceListOnAction" prefHeight="35.0" prefWidth="147.0" text="Attendance List" VBox.vgrow="ALWAYS" />
+                  <Button fx:id="btnAttendanceReport" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAttendanceReportOnAction" prefHeight="35.0" prefWidth="147.0" text="Attendace Report" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <VBox layoutX="253.9619140625" layoutY="147.0" spacing="30.0">
+         <children>
+            <HBox spacing="20.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="150.0" text="Total Workers:" />
+                  <Label fx:id="lblTotalWorkers" text="No of Active Employees" />
+               </children>
+            </HBox>
+            <HBox spacing="20.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="150.0" text="Total Leaves:" />
+                  <Label fx:id="lblLeaves" text="No of leaves" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="56.0" spacing="20.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="150.0" text="Total Active Workers:" />
+                  <Label fx:id="lblActive" text="No of Active workers" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Label fx:id="lblDate" layoutX="218.0" layoutY="18.0" prefHeight="16.0" prefWidth="100.0" text="Date" />
+      <Label fx:id="lblTime" layoutX="218.0" layoutY="45.0" prefHeight="16.0" prefWidth="100.0" text="Time" />
+      <Label layoutX="399.0" layoutY="103.0" text="Todays Summary" />
+   </children>
+</AnchorPane>

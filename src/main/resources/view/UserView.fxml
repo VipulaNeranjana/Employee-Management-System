@@ -3,35 +3,266 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="496.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.app.controller.UserViewController">
+<AnchorPane fx:id="paneRoot" prefHeight="667.0" prefWidth="884.0" stylesheets="@../css/UserViewStyles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.app.controller.UserViewController">
    <children>
-      <AnchorPane prefHeight="496.0" prefWidth="195.0" style="-fx-background-color: grey;">
+      <AnchorPane fx:id="panePanel" prefHeight="496.0" prefWidth="195.0" style="-fx-background-color: grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="116.0" fitWidth="154.0" layoutX="40.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/group.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="67.0" layoutY="145.0" text="Welcome" />
-            <Label layoutX="10.0" layoutY="169.0" text="Gayashan">
-               <font>
-                  <Font name="System Bold" size="32.0" />
-               </font>
-            </Label>
-            <Separator layoutX="7.0" layoutY="219.0" prefHeight="9.0" prefWidth="183.0" />
-            <VBox layoutX="28.0" layoutY="238.0" prefHeight="81.0" prefWidth="141.0">
+            <ImageView fx:id="imgProfilePicture" fitHeight="150.0" fitWidth="150.0" layoutX="27.0" layoutY="19.0" pickOnBounds="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+            <VBox layoutX="20.0" layoutY="170.0" spacing="5.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                <children>
-                  <Button fx:id="btnLeave" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLeaveOnAction" text="Leave" VBox.vgrow="ALWAYS" />
-                  <Button fx:id="btnPaySheet" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnPaySheetOnAction" text="Paysheet" VBox.vgrow="ALWAYS" />
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="158.0" text="Welcome">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblUserName" alignment="CENTER" prefHeight="21.0" prefWidth="158.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Separator layoutX="7.0" layoutY="219.0" prefHeight="9.0" prefWidth="183.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <VBox layoutX="28.0" layoutY="238.0" prefHeight="81.0" prefWidth="141.0" spacing="15.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="27.0">
+               <children>
+                  <Button fx:id="btnLeave" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLeaveOnAction" text="Leave" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button fx:id="btnPaySheet" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnPaySheetOnAction" text="Paysheet" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                </children>
             </VBox>
          </children>
       </AnchorPane>
+      <VBox layoutX="206.0" layoutY="129.0" spacing="12.0" AnchorPane.leftAnchor="211.0" AnchorPane.rightAnchor="20.0">
+         <children>
+            <Label maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="653.0" text="Personal Details" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <HBox spacing="15.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="150.0" text="ID                     " HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblID" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="21.0" prefWidth="651.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="150.0" text="Name               " HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblName" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="21.0" prefWidth="651.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="150.0" text="NIC                   " HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblNIC" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="21.0" prefWidth="651.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="150.0" text="Date of Birth    " HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblDOB" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="21.0" prefWidth="653.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="150.0" text="Address           " HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblAddress" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="21.0" prefWidth="651.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="150.0" text="Contact           " HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblContact" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="21.0" prefWidth="651.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="150.0" text="Gender            " HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblGender" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="21.0" prefWidth="653.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="150.0" text="Marital Status  " HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblMaritalStatus" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="21.0" prefWidth="651.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="150.0" text="Nationality" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblNationality" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="203.0" layoutY="491.0" spacing="12.0" AnchorPane.leftAnchor="211.0" AnchorPane.rightAnchor="20.0">
+         <children>
+            <Label maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="660.0" text="Company Related Details" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="21.0" prefWidth="663.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="150.0" text="Joined Date" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblJoinedDate" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="21.0" prefWidth="666.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="150.0" text="Designation" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblDesignation" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="21.0" prefWidth="665.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="150.0" text="Basic Salary" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblBasicSalary" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="21.0" prefWidth="662.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="150.0" text="Union Member" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblUnionMember" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="213.0" layoutY="35.0" spacing="20.0" AnchorPane.leftAnchor="213.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <Label fx:id="lblTakenLeaves" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="67.0" prefWidth="210.0" text="XX leaves have been taken" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPendingLeaves" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="67.0" prefWidth="210.0" text="XX pending leave requests" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblRemainingLeaves" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="67.0" prefWidth="210.0" text="XX leaves are remaining" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Separator layoutX="197.0" layoutY="110.0" prefHeight="0.0" prefWidth="687.0" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="0.0" />
+      <Separator layoutX="195.0" layoutY="476.0" prefHeight="3.0" prefWidth="687.0" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

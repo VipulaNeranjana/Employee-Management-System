@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +22,17 @@ import java.util.Set;
 public class AppInitializer extends Application {
 
     public static void main(String[] args) {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            try {
+                if (DBConnection.getInstance().getConnection() != null &&
+                        !DBConnection.getInstance().getConnection().isClosed()) {
+                    System.out.println("Database connection is about to close");
+                    DBConnection.getInstance().getConnection().close();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }));
         launch(args);
     }
 
@@ -35,17 +47,7 @@ public class AppInitializer extends Application {
         primaryStage.setTitle("Login Window");
         primaryStage.show();
         primaryStage.centerOnScreen();
-
-
-
     }
-
-
-
-
-
-
-
     private void generateSchemaIfNotExist() {
         Connection connection = DBConnection.getInstance().getConnection();
         try {

@@ -37,7 +37,7 @@ public class AdminViewController {
 
     @FXML
     void btnLeaveOnAction(ActionEvent event) throws IOException {
-        Stage stage=new Stage();
+        Stage stage=(Stage) btnLeave.getScene().getWindow();
         URL fxmlFile=this.getClass().getResource("/view/AdminLeaveView.fxml");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();

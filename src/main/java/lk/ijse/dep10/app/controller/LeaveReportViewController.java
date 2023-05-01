@@ -20,6 +20,10 @@ import java.time.LocalDate;
 
 public class LeaveReportViewController {
 
+    public Button btnAttendance;
+    public Button btnEmployee;
+    public Button btnLeave;
+    public Button btnPayroll;
     @FXML
     private Button btnCancel;
 
@@ -39,6 +43,7 @@ public class LeaveReportViewController {
         tblLeaveApprove.getColumns().get(3).getStyleClass().add("center");
         tblLeaveApprove.getColumns().get(4).getStyleClass().add("center");
         tblLeaveApprove.getColumns().get(5).getStyleClass().add("center");
+        tblLeaveApprove.getColumns().get(6).getStyleClass().add("center");
     }
 
     private void loadAllLeaveRequest() {
@@ -82,7 +87,7 @@ public class LeaveReportViewController {
     }
 
     public void btnEmployeeOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage=new Stage();
+        Stage stage=(Stage) btnEmployee.getScene().getWindow();
         URL fxmlFile=this.getClass().getResource("#");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();
@@ -94,7 +99,7 @@ public class LeaveReportViewController {
     }
 
     public void btnAttendanceOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage=new Stage();
+        Stage stage=(Stage) btnAttendance.getScene().getWindow();
         URL fxmlFile=this.getClass().getResource("#");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();
@@ -106,7 +111,7 @@ public class LeaveReportViewController {
     }
 
     public void btnLeaveOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage=new Stage();
+        Stage stage=(Stage) btnLeave.getScene().getWindow();
         URL fxmlFile=this.getClass().getResource("#");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();
@@ -118,7 +123,7 @@ public class LeaveReportViewController {
     }
 
     public void btnPayrollOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage=new Stage();
+        Stage stage=(Stage) btnPayroll.getScene().getWindow();
         URL fxmlFile=this.getClass().getResource("#");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();

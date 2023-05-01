@@ -23,6 +23,10 @@ import java.time.LocalDate;
 public class AdminLeaveViewController {
 
     public Button btnViewHistory;
+    public Button btnEmployee;
+    public Button btnAttendance;
+    public Button btnLeave;
+    public Button btnPayroll;
     @FXML
     private Button btnApprove;
 
@@ -57,6 +61,7 @@ public class AdminLeaveViewController {
         tblLeaveApprove.getColumns().get(3).getStyleClass().add("center");
         tblLeaveApprove.getColumns().get(4).getStyleClass().add("center");
         tblLeaveApprove.getColumns().get(5).getStyleClass().add("center");
+        tblLeaveApprove.getColumns().get(6).getStyleClass().add("center");
     }
 
     private void loadAllLeaveRequest() {
@@ -159,7 +164,7 @@ public class AdminLeaveViewController {
     }
 
     public void btnViewHistoryOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
+        Stage stage=(Stage) btnViewHistory.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/LeaveReportView.fxml"));
         AnchorPane root = fxmlLoader.load();
         stage.setScene(new Scene(root));
@@ -170,7 +175,7 @@ public class AdminLeaveViewController {
     }
 
     public void btnEmployeeOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage=new Stage();
+        Stage stage=(Stage) btnEmployee.getScene().getWindow();
         URL fxmlFile=this.getClass().getResource("#");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();
@@ -182,7 +187,7 @@ public class AdminLeaveViewController {
     }
 
     public void btnPayrollOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage=new Stage();
+        Stage stage=(Stage) btnPayroll.getScene().getWindow();
         URL fxmlFile=this.getClass().getResource("#");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();
@@ -194,7 +199,7 @@ public class AdminLeaveViewController {
     }
 
     public void btnLeaveOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage=new Stage();
+        Stage stage=(Stage) btnLeave.getScene().getWindow();
         URL fxmlFile=this.getClass().getResource("#");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();
@@ -206,7 +211,7 @@ public class AdminLeaveViewController {
     }
 
     public void btnAttendanceOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage=new Stage();
+        Stage stage=(Stage) btnAttendance.getScene().getWindow();
         URL fxmlFile=this.getClass().getResource("#");
         FXMLLoader fxmlLoader=new FXMLLoader(fxmlFile);
         AnchorPane root=fxmlLoader.load();

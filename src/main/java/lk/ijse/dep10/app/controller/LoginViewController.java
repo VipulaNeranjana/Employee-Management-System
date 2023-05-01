@@ -54,7 +54,6 @@ public class LoginViewController {
             if (userName.equals("USERNAME")&& passWord.equals("PASSWORD")){
                 FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/AdminView.fxml"));
                 AnchorPane root  =fxmlLoader.load();
-
                 stage.setScene(new Scene(root));
                 stage.setTitle("Admin Window");
                 stage.show();

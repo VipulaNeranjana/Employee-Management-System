@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="512.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.app.controller.AttendanceReportViewController">
    <children>
       <Label alignment="CENTER" layoutX="282.0" layoutY="40.0" text="Attendance Report" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
@@ -42,5 +41,6 @@
         </columns>
       </TableView>
       <Button fx:id="btnBack" layoutX="517.0" layoutY="22.0" mnemonicParsing="false" onAction="#btnBackOnAction" text="Back" />
+      <Button fx:id="btnGenerateReport" layoutX="33.0" layoutY="422.0" mnemonicParsing="false" onAction="#btnGenerateReportOnAction" text="Generate Report" />
    </children>
 </AnchorPane>

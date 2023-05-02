@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import lk.ijse.dep10.app.db.DBConnection;
@@ -46,6 +47,7 @@ public class EmployeeTableViewController {
     @FXML
     private TableView<EmployeeTable> tblEmployees;
     private ArrayList<EmployeeTable> employeeList;
+    private int employeeId;
 
     public void initialize(){
         tblEmployees.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -113,8 +115,21 @@ public class EmployeeTableViewController {
     }
 
     @FXML
-    void btnChangeOnAction(ActionEvent event) {
+    void btnChangeOnAction(ActionEvent event) throws IOException {
+        EmployeeTable selectedEmployee = tblEmployees.getSelectionModel().getSelectedItem();
+        employeeId = selectedEmployee.getId();
 
+        Stage stage = (Stage) btnChange.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/UpdateEmployeeView.fxml"));
+        AnchorPane root  =fxmlLoader.load();
+
+        stage.setScene(new Scene(root));
+        stage.setTitle("Update Employee Window");
+        stage.show();
+        stage.centerOnScreen();
+
+        UpdateEmployeeViewController controller = fxmlLoader.getController();
+        controller.getEmployeeId(employeeId);
     }
 
     @FXML

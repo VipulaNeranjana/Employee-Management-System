@@ -100,7 +100,7 @@
                                                 <HBox prefHeight="19.0" prefWidth="280.0">
                                                     <children>
                                                         <Label minHeight="24.0" minWidth="150.0" text="DOB : " />
-                                                        <DatePicker fx:id="calDob" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                                        <DatePicker fx:id="calDob" editable="false" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                                     </children>
                                                     <padding>
                                                         <Insets right="5.0" />
@@ -125,7 +125,7 @@
                                                                         <ToggleGroup fx:id="Gender" />
                                                                     </toggleGroup>
                                                                 </RadioButton>
-                                                                <RadioButton fx:id="tdoFemale" mnemonicParsing="false" text="Female" toggleGroup="$Gender" />
+                                                                <RadioButton fx:id="rdoFemale" mnemonicParsing="false" text="Female" toggleGroup="$Gender" />
                                                             </children>
                                                         </HBox>
                                                     </children>
@@ -150,8 +150,7 @@
                                                         </AnchorPane>
                                                         <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="88.0" spacing="10.0" HBox.hgrow="ALWAYS">
                                                             <children>
-                                                                <Button fx:id="btnAddPic" maxWidth="200.0" mnemonicParsing="false" onAction="#btnAddPicOnAction" text="Add" VBox.vgrow="ALWAYS" />
-                                                                <Button fx:id="btnRemovePic" layoutX="10.0" layoutY="10.0" maxWidth="200.0" mnemonicParsing="false" onAction="#btnRemovePicOnAction" text="Remove" VBox.vgrow="ALWAYS" />
+                                                                <Button fx:id="btnAddNewPic" maxWidth="200.0" mnemonicParsing="false" onAction="#btnAddNewPicOnAction" text="Add New Picture" VBox.vgrow="ALWAYS" />
                                                             </children>
                                                         </VBox>
                                                     </children>
@@ -272,7 +271,7 @@
                                                 <HBox layoutX="15.0" layoutY="92.0" prefHeight="19.0" prefWidth="280.0">
                                                     <children>
                                                         <Label minHeight="24.0" minWidth="150.0" text="Joined Date : " />
-                                                        <DatePicker fx:id="calJoinedDate" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                                        <DatePicker fx:id="calJoinedDate" editable="false" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                                     </children>
                                                     <padding>
                                                         <Insets right="5.0" />
@@ -336,7 +335,7 @@
                                                 <HBox layoutX="15.0" layoutY="44.0" prefHeight="19.0" prefWidth="280.0">
                                                     <children>
                                                         <Label minHeight="24.0" minWidth="150.0" text="Bank Name : " />
-                                                        <TextField fx:id="txtBankAccount" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                                        <TextField fx:id="txtBankName" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                                     </children>
                                                     <padding>
                                                         <Insets right="5.0" />
@@ -388,8 +387,8 @@
                                                         <Label minHeight="24.0" minWidth="150.0" text="CV : " />
                                                         <HBox spacing="5.0" HBox.hgrow="ALWAYS">
                                                             <children>
-                                                                <TextField fx:id="txtCVPath" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                                                                <Button fx:id="btnAddCv" minWidth="50.0" mnemonicParsing="false" onAction="#btnAddCvOnAction" text="Add" />
+                                                                <TextField fx:id="txtCVPath" editable="false" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="145.0" HBox.hgrow="ALWAYS" />
+                                                                <Button fx:id="btnAddNewCv" minWidth="50.0" mnemonicParsing="false" onAction="#btnAddNewCvOnAction" text="Add New" />
                                                             </children>
                                                         </HBox>
                                                     </children>
@@ -402,8 +401,8 @@
                                                         <Label minHeight="24.0" minWidth="150.0" text="Birth Certificate : " />
                                                         <HBox spacing="5.0" HBox.hgrow="ALWAYS">
                                                             <children>
-                                                                <TextField fx:id="txtBirthCertificatePath" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                                                                <Button fx:id="btnBirthCertificateAdd" minWidth="50.0" mnemonicParsing="false" onAction="#btnBirthCertificateAddOnAction" text="Add" />
+                                                                <TextField fx:id="txtBirthCertificatePath" editable="false" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="144.0" HBox.hgrow="ALWAYS" />
+                                                                <Button fx:id="btnAddNewBirthCertificate" minWidth="50.0" mnemonicParsing="false" onAction="#btnAddNewBirthCertificateOnAction" text="Add New" />
                                                             </children>
                                                         </HBox>
                                                     </children>
@@ -416,8 +415,8 @@
                                                         <Label minHeight="24.0" minWidth="150.0" text="Offer Latter : " />
                                                         <HBox spacing="5.0" HBox.hgrow="ALWAYS">
                                                             <children>
-                                                                <TextField fx:id="txtOfferLetterPath" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                                                                <Button fx:id="btnOfferLetterAdd" minWidth="50.0" mnemonicParsing="false" onAction="#btnOfferLetterAddOnAction" text="Add" />
+                                                                <TextField fx:id="txtOfferLetterPath" editable="false" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="144.0" HBox.hgrow="ALWAYS" />
+                                                                <Button fx:id="btnAddNewOfferLetter" minWidth="50.0" mnemonicParsing="false" onAction="#btnAddNewOfferLetterOnAction" text="Add New" />
                                                             </children>
                                                         </HBox>
                                                     </children>
@@ -430,8 +429,8 @@
                                                         <Label minHeight="24.0" minWidth="150.0" text="Agreement Latter : " />
                                                         <HBox spacing="5.0" HBox.hgrow="ALWAYS">
                                                             <children>
-                                                                <TextField fx:id="txtAgreementLetterPath" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                                                                <Button fx:id="btnAgreementLetterAdd" minWidth="50.0" mnemonicParsing="false" onAction="#btnAgreementLetterAddOnAction" text="Add" />
+                                                                <TextField fx:id="txtAgreementLetterPath" editable="false" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="144.0" HBox.hgrow="ALWAYS" />
+                                                                <Button fx:id="btnAddNewAgreementLetter" minWidth="50.0" mnemonicParsing="false" onAction="#btnAddNewAgreementLetterOnAction" text="Add New" />
                                                             </children>
                                                         </HBox>
                                                     </children>

@@ -26,7 +26,6 @@ public class AppInitializer extends Application {
             try {
                 if (DBConnection.getInstance().getConnection() != null &&
                         !DBConnection.getInstance().getConnection().isClosed()) {
-                    System.out.println("Database connection is about to close");
                     DBConnection.getInstance().getConnection().close();
                 }
             } catch (SQLException e) {

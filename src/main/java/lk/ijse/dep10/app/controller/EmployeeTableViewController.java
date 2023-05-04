@@ -16,6 +16,7 @@ import lk.ijse.dep10.app.model.EmployeeTable;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class EmployeeTableViewController {
 
@@ -155,18 +156,42 @@ public class EmployeeTableViewController {
 
     @FXML
     void btnRemoveOnAction(ActionEvent event) {
-        Connection connection = DBConnection.getInstance().getConnection();
-        try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Employee WHERE id=?");
-            EmployeeTable employee = tblEmployees.getSelectionModel().getSelectedItem();
-            statement.setInt(1,employee.getId());
-            statement.executeUpdate();
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure to remove " + tblEmployees.getSelectionModel().getSelectedItem().getName(), ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> result = confirmAlert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.YES){
+            Connection connection = DBConnection.getInstance().getConnection();
+            try {
+                connection.setAutoCommit(false);
+                PreparedStatement statement = connection.prepareStatement("DELETE FROM Employee WHERE id=?");
+                EmployeeTable employee = tblEmployees.getSelectionModel().getSelectedItem();
+                statement.setInt(1,employee.getId());
+                statement.executeUpdate();
+                connection.commit();
+                tblEmployees.getItems().remove(tblEmployees.getSelectionModel().getSelectedItem());
 
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,"failed to delete employer, please try again");
-            throw new RuntimeException(e);
+            } catch (Throwable e) {
+                try {
+                    connection.rollback();
+                }
+                catch (SQLException ex){
+                    throw new RuntimeException(ex);
+                }
+                new Alert(Alert.AlertType.ERROR,"failed to delete employer, please try again");
+                throw new RuntimeException(e);
+            }
+            finally {
+                try {
+                    connection.setAutoCommit(true);
+                }
+                catch (SQLException e){
+                    throw new RuntimeException(e);
+                }
+            }
         }
-        tblEmployees.getItems().remove(tblEmployees.getSelectionModel().getSelectedItem());
+        else {
+            return;
+        }
+
     }
 
 }

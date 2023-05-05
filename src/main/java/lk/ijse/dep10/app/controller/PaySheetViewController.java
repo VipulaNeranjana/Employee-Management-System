@@ -50,6 +50,9 @@ public class PaySheetViewController {
         stage.setTitle("User Window");
         stage.show();
         stage.centerOnScreen();
+
+        UserViewController controller = fxmlLoader.getController();
+        controller.getEmployeeId(employeeId);
     }
 
     @FXML
@@ -109,6 +112,9 @@ public class PaySheetViewController {
                     JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, reportParams, dataSource);
                     JasperViewer.viewReport(jasperPrint,false);
                 }
+            }
+            else {
+                new Alert(Alert.AlertType.ERROR,"invalid Input").showAndWait();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Unable to find employee, try again...!").showAndWait();

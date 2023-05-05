@@ -408,8 +408,15 @@ public class UpdateEmployeeViewController {
     }
 
     @FXML
-    void btnAttendanceOnAction(ActionEvent event) {
+    void btnAttendanceOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnEmployee.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/AdminAttendanceView.fxml"));
+        AnchorPane root  =fxmlLoader.load();
 
+        stage.setScene(new Scene(root));
+        stage.setTitle("Admin Attendance View");
+        stage.show();
+        stage.centerOnScreen();
     }
 
     @FXML
@@ -425,14 +432,28 @@ public class UpdateEmployeeViewController {
     }
 
     @FXML
-    void btnLeaveOnAction(ActionEvent event) {
+    void btnLeaveOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnEmployee.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/AdminLeaveView.fxml"));
+        AnchorPane root  =fxmlLoader.load();
 
+        stage.setScene(new Scene(root));
+        stage.setTitle("Admin Leave");
+        stage.show();
+        stage.centerOnScreen();
     }
 
 
     @FXML
-    void btnPayrollOnAction(ActionEvent event) {
+    void btnPayrollOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnEmployee.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/AdminPayrollView.fxml"));
+        AnchorPane root  =fxmlLoader.load();
 
+        stage.setScene(new Scene(root));
+        stage.setTitle("Admin Payroll Management");
+        stage.show();
+        stage.centerOnScreen();
     }
 
     @FXML

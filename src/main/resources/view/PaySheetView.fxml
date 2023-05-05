@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="247.0" prefWidth="392.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.app.controller.PaySheetViewController">
    <children>
       <DatePicker fx:id="txtSelectedDate" layoutX="46.0" layoutY="130.0" prefHeight="35.0" prefWidth="305.0" promptText="Select a date" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.0" />
@@ -37,7 +36,7 @@
             <Font name="System Bold Italic" size="35.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="86.0" prefHeight="44.0" prefWidth="306.0" text="(Hint - Please select any data of the month you selected, to view / print your pay sheet)" wrapText="true" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.0">
+      <Label layoutX="46.0" layoutY="86.0" prefHeight="44.0" prefWidth="306.0" text="(Hint - Please select any date of the month you selected, to view / print your pay sheet)" wrapText="true" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.0">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>

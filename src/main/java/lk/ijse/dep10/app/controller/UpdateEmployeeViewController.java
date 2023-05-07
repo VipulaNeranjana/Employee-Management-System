@@ -32,6 +32,7 @@ import java.util.List;
 
 public class UpdateEmployeeViewController {
 
+    public ImageView imgNavBarPic;
     @FXML
     private Button btnAddNewAgreementLetter;
     @FXML
@@ -186,6 +187,7 @@ public class UpdateEmployeeViewController {
     private byte[] oldOfferLetter;
     private SerialBlob offerLetterBlob;
     private boolean isValid = true;
+    private boolean validProfilePic = true;
     private int employeeId;
     public void getEmployeeId(int id){
         employeeId = id;
@@ -198,13 +200,19 @@ public class UpdateEmployeeViewController {
                 stm1.setInt(1, employeeId);
                 ResultSet rst1 = stm1.executeQuery();
                 if (rst1.next()){
-                    txtId.setText(String.valueOf(rst1.getInt("id")));
+                    txtId.setText("E-" + rst1.getDate("joined_date").toLocalDate().getYear() + "-" + rst1.getInt("id"));
                     txtFullName.setText(rst1.getString("name"));
+
+                    lblUserName.setText(rst1.getString("name"));
+
                     txtNicNo.setText(rst1.getString("nic"));
                     calDob.setValue(rst1.getDate("dob").toLocalDate());
                     txtContact.setText(rst1.getString("contact"));
                     Gender.selectToggle(rst1.getString("gender").equals("MALE") ? rdoMale : rdoFemale);
                     imgProfile.setImage(new Image(rst1.getBlob("profile_pic").getBinaryStream(), 175, 150, true, true));
+
+                    imgNavBarPic.setImage(new Image(rst1.getBlob("profile_pic").getBinaryStream(), 125, 125, true, true));
+
                     MaritalStatus.selectToggle(rst1.getString("marital_status").equals("MARRIED") ? rdoMarried : rdoUnMarried);
                     txtAddress.setText(rst1.getString("address"));
                     UserType.selectToggle(rst1.getString("user_type").equals("ADMIN") ? rdoAdmin : rdoUser);
@@ -404,6 +412,9 @@ public class UpdateEmployeeViewController {
                 throw new RuntimeException(e);
             }
             imgProfile.setImage(image);
+            if (!validProfilePic){
+                validProfilePic = true;
+            }
         }
     }
 
@@ -462,7 +473,7 @@ public class UpdateEmployeeViewController {
         try {
             connection.setAutoCommit(false);
             if (!isValidData()){
-                new Alert(Alert.AlertType.ERROR, "Invalid Data. Try again...!").showAndWait();
+                new Alert(Alert.AlertType.ERROR, "Invalid Data. Please check all the entries. Entries cannot be empty except 'Union Member' check box. Try again...!").showAndWait();
                 return;
             }
 
@@ -579,11 +590,15 @@ public class UpdateEmployeeViewController {
     }
     private boolean isValidData(){
         boolean isValid = true;
-        if (txtFullName.getStyleClass().contains("invalid") || txtNicNo.getStyleClass().contains("invalid") || calDob.getStyleClass().contains("invalid") || txtContact.getStyleClass().contains("invalid") || txtAddress.getStyleClass().contains("invalid") || txtNationality.getStyleClass().contains("invalid") || txtUserName.getStyleClass().contains("invalid") || txtPassword.getStyleClass().contains("invalid") || calJoinedDate.getStyleClass().contains("invalid") || txtBasicSalary.getStyleClass().contains("invalid") || txtBankName.getStyleClass().contains("invalid") || txtAccountNo.getStyleClass().contains("invalid") || txtBranchName.getStyleClass().contains("invalid")){
+        if (txtFullName.getStyleClass().contains("invalid") || txtNicNo.getStyleClass().contains("invalid") || calDob.getStyleClass().contains("invalid") || txtContact.getStyleClass().contains("invalid") || txtAddress.getStyleClass().contains("invalid") || txtNationality.getStyleClass().contains("invalid") || txtUserName.getStyleClass().contains("invalid") || txtPassword.getStyleClass().contains("invalid") || calJoinedDate.getStyleClass().contains("invalid") || txtBasicSalary.getStyleClass().contains("invalid") || txtBankName.getStyleClass().contains("invalid") || txtAccountNo.getStyleClass().contains("invalid") || txtBranchName.getStyleClass().contains("invalid") || !validProfilePic){
             isValid = false;
         }
         return isValid;
     }
 
+    public void btnDeletePictureOnAction(ActionEvent event) throws URISyntaxException, MalformedURLException {
+        imgProfile.setImage(new Image(getClass().getResource("/img/profile-pic.jpg").toURI().toURL().toString()));
+        validProfilePic = false;
+    }
 }
 
